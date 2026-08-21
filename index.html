@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Student Utility Hub - Free calculators, productivity tools and useful utilities for students."
+    >
+
+    <title>Student Utility Hub | Free Student Tools</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="container navbar">
+
+            <a href="#" class="logo">
+                <span class="logo-icon">⚡</span>
+                Student<span>Hub</span>
+            </a>
+
+            <nav class="nav">
+                <a href="#tools">Tools</a>
+                <a href="#about">About</a>
+
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
+                    🌙
+                </button>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="container hero-content">
+
+                <div class="hero-badge">
+                    ✨ Free tools made for students
+                </div>
+
+                <h1>
+                    Everything you need,
+                    <span>in one place.</span>
+                </h1>
+
+                <p>
+                    Free, simple and fast tools to help you study,
+                    calculate, create and get things done.
+                </p>
+
+
+                <!-- Search -->
+
+                <div class="search-box">
+
+                    <span class="search-icon">🔍</span>
+
+                    <input
+                        type="text"
+                        id="toolSearch"
+                        placeholder="Search a tool..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TOOLS ================= -->
+
+        <section class="tools-section" id="tools">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="section-label">TOOLS</p>
+
+                        <h2>
+                            Popular student tools
+                        </h2>
+                    </div>
+
+                    <p class="tool-count">
+                        <span id="toolCount">6</span> tools
+                    </p>
+
+                </div>
+
+
+                <div class="tools-grid" id="toolsGrid">
+
+
+                    <!-- Percentage Calculator -->
+
+                    <article class="tool-card" data-name="percentage calculator">
+
+                        <div class="tool-icon blue">
+                            %
+                        </div>
+
+                        <div class="tool-content">
+
+                            <h3>Percentage Calculator</h3>
+
+                            <p>
+                                Quickly calculate percentages,
+                                increases and decreases.
+                            </p>
+
+                            <button
+                                class="open-tool"
+                                data-tool="percentage"
+                            >
+                                Open Tool →
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- CGPA Calculator -->
+
+                    <article class="tool-card" data-name="cgpa calculator">
+
+                        <div class="tool-icon purple">
+                            🎓
+                        </div>
+
+                        <div class="tool-content">
+
+                            <h3>CGPA Calculator</h3>
+
+                            <p>
+                                Calculate your CGPA quickly
+                                from your semester grades.
+                            </p>
+
+                            <button
+                                class="open-tool"
+                                data-tool="cgpa"
+                            >
+                                Open Tool →
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Pomodoro -->
+
+                    <article class="tool-card" data-name="pomodoro timer">
+
+                        <div class="tool-icon orange">
+                            ⏱️
+                        </div>
+
+                        <div class="tool-content">
+
+                            <h3>Pomodoro Timer</h3>
+
+                            <p>
+                                Focus on your studies with
+                                the Pomodoro technique.
+                            </p>
+
+                            <button
+                                class="open-tool"
+                                data-tool="pomodoro"
+                            >
+                                Open Tool →
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Word Counter -->
+
+                    <article class="tool-card" data-name="word counter">
+
+                        <div class="tool-icon green">
+                            📝
+                        </div>
+
+                        <div class="tool-content">
+
+                            <h3>Word Counter</h3>
+
+                            <p>
+                                Count words, characters and
+                                sentences in your text.
+                            </p>
+
+                            <button
+                                class="open-tool"
+                                data-tool="word"
+                            >
+                                Open Tool →
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Password Generator -->
+
+                    <article class="tool-card" data-name="password generator">
+
+                        <div class="tool-icon red">
+                            🔐
+                        </div>
+
+                        <div class="tool-content">
+
+                            <h3>Password Generator</h3>
+
+                            <p>
+                                Generate strong and secure
+                                random passwords.
+                            </p>
+
+                            <button
+                                class="open-tool"
+                                data-tool="password"
+                            >
+                                Open Tool →
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- QR Generator -->
+
+                    <article class="tool-card" data-name="qr code generator">
+
+                        <div class="tool-icon cyan">
+                            ▦
+                        </div>
+
+                        <div class="tool-content">
+
+                            <h3>QR Code Generator</h3>
+
+                            <p>
+                                Turn text or links into a
+                                QR code instantly.
+                            </p>
+
+                            <button
+                                class="open-tool"
+                                data-tool="qr"
+                            >
+                                Open Tool →
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+                <!-- No results -->
+
+                <div id="noResults" class="no-results hidden">
+
+                    <div>🔎</div>
+
+                    <h3>No tools found</h3>
+
+                    <p>
+                        Try searching for another tool.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ABOUT ================= -->
+
+        <section class="about-section" id="about">
+
+            <div class="container about-content">
+
+                <div class="about-icon">
+                    ⚡
+                </div>
+
+                <div>
+
+                    <p class="section-label">
+                        ABOUT STUDENTHUB
+                    </p>
+
+                    <h2>
+                        Simple tools. Less hassle.
+                    </h2>
+
+                    <p>
+                        StudentHub is built to give students
+                        quick access to useful tools without
+                        complicated interfaces or unnecessary
+                        sign-ups.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= TOOL MODAL ================= -->
+
+    <div id="toolModal" class="modal hidden">
+
+        <div class="modal-overlay"></div>
+
+        <div class="modal-box">
+
+            <button
+                id="closeModal"
+                class="close-modal"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+            <div id="modalContent"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="container footer-content">
+
+            <p>
+                © 2026 StudentHub. Built for students.
+            </p>
+
+            <p>
+                Free • Fast • Simple
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
