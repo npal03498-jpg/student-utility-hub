@@ -8,39 +8,94 @@
 // ELEMENTS
 // =====================================================
 
-const toolSearch = document.getElementById("toolSearch");
-const toolsGrid = document.getElementById("toolsGrid");
-const toolCards = document.querySelectorAll(".tool-card");
-const toolCount = document.getElementById("toolCount");
-const noResults = document.getElementById("noResults");
+const toolSearch =
+    document.getElementById("toolSearch");
 
-const toolModal = document.getElementById("toolModal");
-const modalContent = document.getElementById("modalContent");
-const closeModal = document.getElementById("closeModal");
+const toolsGrid =
+    document.getElementById("toolsGrid");
 
-const themeToggle = document.getElementById("themeToggle");
+const toolCards =
+    document.querySelectorAll(".tool-card");
+
+const toolCount =
+    document.getElementById("toolCount");
+
+const noResults =
+    document.getElementById("noResults");
+
+const toolModal =
+    document.getElementById("toolModal");
+
+const modalContent =
+    document.getElementById("modalContent");
+
+const closeModal =
+    document.getElementById("closeModal");
+
+const themeToggle =
+    document.getElementById("themeToggle");
+
+const categoryButtons =
+    document.querySelectorAll(".category-card");
+
+const mobileMenuBtn =
+    document.getElementById("mobileMenuBtn");
+
+const mainNav =
+    document.getElementById("mainNav");
 
 
 // =====================================================
-// TOOL SEARCH
+// CATEGORY STATE
 // =====================================================
 
-toolSearch.addEventListener("input", function () {
+let activeCategory = "all";
 
-    const searchText = this.value
-        .toLowerCase()
-        .trim();
+
+// =====================================================
+// TOOL SEARCH + CATEGORY FILTER
+// =====================================================
+
+function filterTools() {
+
+    const searchText =
+        toolSearch.value
+            .toLowerCase()
+            .trim();
 
     let visibleTools = 0;
 
+
     toolCards.forEach(function (card) {
 
-        const toolName = card
-            .dataset
-            .name
-            .toLowerCase();
+        const toolName =
+            card.dataset.name
+                .toLowerCase();
 
-        if (toolName.includes(searchText)) {
+        const categories =
+            card.dataset.category
+                .toLowerCase();
+
+
+        // Search match
+
+        const matchesSearch =
+            toolName.includes(searchText);
+
+
+        // Category match
+
+        const matchesCategory =
+            activeCategory === "all" ||
+            categories.includes(activeCategory);
+
+
+        // Show / hide card
+
+        if (
+            matchesSearch &&
+            matchesCategory
+        ) {
 
             card.style.display = "flex";
 
@@ -55,20 +110,182 @@ toolSearch.addEventListener("input", function () {
     });
 
 
-    toolCount.textContent = visibleTools;
+    // Update count
 
+    toolCount.textContent =
+        visibleTools;
+
+
+    // No results
 
     if (visibleTools === 0) {
 
-        noResults.classList.remove("hidden");
+        noResults.classList.remove(
+            "hidden"
+        );
 
     } else {
 
-        noResults.classList.add("hidden");
+        noResults.classList.add(
+            "hidden"
+        );
 
     }
 
-});
+}
+
+
+// Search typing
+
+toolSearch.addEventListener(
+    "input",
+    filterTools
+);
+
+
+// =====================================================
+// CATEGORY BUTTONS
+// =====================================================
+
+categoryButtons.forEach(
+    function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                activeCategory =
+                    this.dataset.category;
+
+
+                // Remove active class
+
+                categoryButtons.forEach(
+                    function (btn) {
+
+                        btn.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                // Add active class
+
+                this.classList.add(
+                    "active"
+                );
+
+
+                // Filter tools
+
+                filterTools();
+
+
+                // Scroll to tools
+
+                document
+                    .getElementById("tools")
+                    .scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+            }
+        );
+
+    }
+);
+
+
+// =====================================================
+// CTRL + K SEARCH
+// =====================================================
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            (event.ctrlKey || event.metaKey) &&
+            event.key.toLowerCase() === "k"
+        ) {
+
+            event.preventDefault();
+
+            toolSearch.focus();
+
+            toolSearch.select();
+
+        }
+
+    }
+);
+
+
+// =====================================================
+// MOBILE MENU
+// =====================================================
+
+if (mobileMenuBtn && mainNav) {
+
+    mobileMenuBtn.addEventListener(
+        "click",
+        function () {
+
+            const isOpen =
+                mainNav.classList.toggle(
+                    "mobile-open"
+                );
+
+
+            mobileMenuBtn.setAttribute(
+                "aria-expanded",
+                isOpen
+            );
+
+
+            mobileMenuBtn.textContent =
+                isOpen ? "✕" : "☰";
+
+        }
+    );
+
+
+    // Close menu when link is clicked
+
+    const navLinks =
+        mainNav.querySelectorAll("a");
+
+
+    navLinks.forEach(
+        function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    mainNav.classList.remove(
+                        "mobile-open"
+                    );
+
+
+                    mobileMenuBtn.textContent =
+                        "☰";
+
+
+                    mobileMenuBtn.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
 
 
 // =====================================================
@@ -79,18 +296,23 @@ const openToolButtons =
     document.querySelectorAll(".open-tool");
 
 
-openToolButtons.forEach(function (button) {
+openToolButtons.forEach(
+    function (button) {
 
-    button.addEventListener("click", function () {
+        button.addEventListener(
+            "click",
+            function () {
 
-        const toolName =
-            this.dataset.tool;
+                const toolName =
+                    this.dataset.tool;
 
-        openTool(toolName);
+                openTool(toolName);
 
-    });
+            }
+        );
 
-});
+    }
+);
 
 
 // =====================================================
@@ -102,9 +324,9 @@ function openTool(toolName) {
     let content = "";
 
 
-    // -------------------------------------------------
-    // Percentage Calculator
-    // -------------------------------------------------
+    // =================================================
+    // PERCENTAGE CALCULATOR
+    // =================================================
 
     if (toolName === "percentage") {
 
@@ -160,9 +382,9 @@ function openTool(toolName) {
     }
 
 
-    // -------------------------------------------------
-    // CGPA Calculator
-    // -------------------------------------------------
+    // =================================================
+    // CGPA CALCULATOR
+    // =================================================
 
     else if (toolName === "cgpa") {
 
@@ -250,79 +472,81 @@ function openTool(toolName) {
     }
 
 
-    // -------------------------------------------------
-    // Pomodoro Timer
-    // -------------------------------------------------
-          else if (toolName === "pomodoro") {
+    // =================================================
+    // POMODORO TIMER
+    // =================================================
 
-    content = `
+    else if (toolName === "pomodoro") {
 
-        <h2>⏱️ Pomodoro Timer</h2>
+        content = `
 
-        <p>
-            Set your focus time and start studying.
-        </p>
+            <h2>⏱️ Pomodoro Timer</h2>
 
-        <div class="tool-form">
+            <p>
+                Set your focus time and start studying.
+            </p>
 
-            <label>
-                Focus Time (minutes)
-            </label>
+            <div class="tool-form">
 
-            <input
-                type="number"
-                id="pomodoroMinutes"
-                value="25"
-                min="1"
-                max="120"
-                placeholder="Example: 25"
-            >
+                <label>
+                    Focus Time (minutes)
+                </label>
 
-        </div>
-
-        <div class="timer">
-
-            <div
-                id="timerDisplay"
-                class="timer-display"
-            >
-                25:00
-            </div>
-
-            <div class="timer-buttons">
-
-                <button
-                    class="primary-btn"
-                    id="startTimer"
+                <input
+                    type="number"
+                    id="pomodoroMinutes"
+                    value="25"
+                    min="1"
+                    max="120"
+                    placeholder="Example: 25"
                 >
-                    Start
-                </button>
-
-                <button
-                    class="primary-btn"
-                    id="pauseTimer"
-                >
-                    Pause
-                </button>
-
-                <button
-                    class="primary-btn"
-                    id="resetTimer"
-                >
-                    Reset
-                </button>
 
             </div>
 
-        </div>
+            <div class="timer">
 
-    `;
-}   
-    
+                <div
+                    id="timerDisplay"
+                    class="timer-display"
+                >
+                    25:00
+                </div>
 
-    // -------------------------------------------------
-    // Word Counter
-    // -------------------------------------------------
+                <div class="timer-buttons">
+
+                    <button
+                        class="primary-btn"
+                        id="startTimer"
+                    >
+                        Start
+                    </button>
+
+                    <button
+                        class="primary-btn"
+                        id="pauseTimer"
+                    >
+                        Pause
+                    </button>
+
+                    <button
+                        class="primary-btn"
+                        id="resetTimer"
+                    >
+                        Reset
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    // =================================================
+    // WORD COUNTER
+    // =================================================
 
     else if (toolName === "word") {
 
@@ -356,9 +580,9 @@ function openTool(toolName) {
     }
 
 
-    // -------------------------------------------------
-    // Password Generator
-    // -------------------------------------------------
+    // =================================================
+    // PASSWORD GENERATOR
+    // =================================================
 
     else if (toolName === "password") {
 
@@ -416,9 +640,9 @@ function openTool(toolName) {
     }
 
 
-    // -------------------------------------------------
-    // QR Generator
-    // -------------------------------------------------
+    // =================================================
+    // QR CODE GENERATOR
+    // =================================================
 
     else if (toolName === "qr") {
 
@@ -459,14 +683,19 @@ function openTool(toolName) {
     }
 
 
-    // Put content inside modal
+    // =================================================
+    // SHOW MODAL
+    // =================================================
 
-    modalContent.innerHTML = content;
+    modalContent.innerHTML =
+        content;
 
-    toolModal.classList.remove("hidden");
+    toolModal.classList.remove(
+        "hidden"
+    );
 
 
-    // Activate the selected tool
+    // Activate selected tool
 
     setupTool(toolName);
 
@@ -492,51 +721,58 @@ function setupTool(toolName) {
             );
 
 
-        calculate.addEventListener("click", function () {
+        calculate.addEventListener(
+            "click",
+            function () {
 
-            const percentage =
-                parseFloat(
+                const percentage =
+                    parseFloat(
+                        document
+                            .getElementById(
+                                "percentageValue"
+                            )
+                            .value
+                    );
+
+
+                const number =
+                    parseFloat(
+                        document
+                            .getElementById(
+                                "percentageNumber"
+                            )
+                            .value
+                    );
+
+
+                const result =
                     document.getElementById(
-                        "percentageValue"
-                    ).value
-                );
+                        "percentageResult"
+                    );
 
 
-            const number =
-                parseFloat(
-                    document.getElementById(
-                        "percentageNumber"
-                    ).value
-                );
+                if (
+                    Number.isNaN(percentage) ||
+                    Number.isNaN(number)
+                ) {
+
+                    result.textContent =
+                        "Please enter both numbers.";
+
+                    return;
+
+                }
 
 
-            const result =
-                document.getElementById(
-                    "percentageResult"
-                );
+                const answer =
+                    (percentage / 100) * number;
 
-
-            if (
-                Number.isNaN(percentage) ||
-                Number.isNaN(number)
-            ) {
 
                 result.textContent =
-                    "Please enter both numbers.";
-
-                return;
+                    `${percentage}% of ${number} = ${answer}`;
 
             }
-
-
-            const answer =
-                (percentage / 100) * number;
-
-
-            result.textContent =
-                `${percentage}% of ${number} = ${answer}`;
-
-        });
+        );
 
     }
 
@@ -553,60 +789,69 @@ function setupTool(toolName) {
             );
 
 
-        calculate.addEventListener("click", function () {
+        calculate.addEventListener(
+            "click",
+            function () {
 
-            const inputs =
-                document.querySelectorAll(
-                    ".gpa-input"
+                const inputs =
+                    document.querySelectorAll(
+                        ".gpa-input"
+                    );
+
+
+                let total = 0;
+
+                let count = 0;
+
+
+                inputs.forEach(
+                    function (input) {
+
+                        const value =
+                            parseFloat(
+                                input.value
+                            );
+
+
+                        if (
+                            !Number.isNaN(value)
+                        ) {
+
+                            total += value;
+
+                            count++;
+
+                        }
+
+                    }
                 );
 
 
-            let total = 0;
-
-            let count = 0;
-
-
-            inputs.forEach(function (input) {
-
-                const value =
-                    parseFloat(input.value);
+                const result =
+                    document.getElementById(
+                        "cgpaResult"
+                    );
 
 
-                if (!Number.isNaN(value)) {
+                if (count === 0) {
 
-                    total += value;
+                    result.textContent =
+                        "Please enter at least one GPA.";
 
-                    count++;
+                    return;
 
                 }
 
-            });
 
+                const cgpa =
+                    total / count;
 
-            const result =
-                document.getElementById(
-                    "cgpaResult"
-                );
-
-
-            if (count === 0) {
 
                 result.textContent =
-                    "Please enter at least one GPA.";
-
-                return;
+                    `Your CGPA is ${cgpa.toFixed(2)}`;
 
             }
-
-
-            const cgpa =
-                total / count;
-
-
-            result.textContent =
-                `Your CGPA is ${cgpa.toFixed(2)}`;
-
-        });
+        );
 
     }
 
@@ -617,217 +862,282 @@ function setupTool(toolName) {
 
     else if (toolName === "pomodoro") {
 
-    let timeLeft = 25 * 60;
+        let timeLeft =
+            25 * 60;
 
-    let timerInterval = null;
+        let timerInterval =
+            null;
 
-    let isRunning = false;
-
-
-    const display =
-        document.getElementById("timerDisplay");
-
-    const minutesInput =
-        document.getElementById("pomodoroMinutes");
-
-    const start =
-        document.getElementById("startTimer");
-
-    const pause =
-        document.getElementById("pauseTimer");
-
-    const reset =
-        document.getElementById("resetTimer");
+        let isRunning =
+            false;
 
 
-    function updateDisplay() {
+        const display =
+            document.getElementById(
+                "timerDisplay"
+            );
 
-        const minutes =
-            Math.floor(timeLeft / 60);
+        const minutesInput =
+            document.getElementById(
+                "pomodoroMinutes"
+            );
 
-        const seconds =
-            timeLeft % 60;
+        const start =
+            document.getElementById(
+                "startTimer"
+            );
 
+        const pause =
+            document.getElementById(
+                "pauseTimer"
+            );
 
-        display.textContent =
-            `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-
-    }
-
-
-    // Change timer when user changes minutes
-
-    minutesInput.addEventListener(
-        "change",
-        function () {
-
-            if (isRunning) {
-                return;
-            }
-
-
-            let minutes =
-                parseInt(this.value);
+        const reset =
+            document.getElementById(
+                "resetTimer"
+            );
 
 
-            if (Number.isNaN(minutes)) {
-                minutes = 25;
-            }
+        function updateDisplay() {
 
-
-            if (minutes < 1) {
-                minutes = 1;
-            }
-
-
-            if (minutes > 120) {
-                minutes = 120;
-            }
-
-
-            this.value = minutes;
-
-            timeLeft = minutes * 60;
-
-            updateDisplay();
-
-        }
-    );
-
-
-    // Start
-
-    start.addEventListener(
-        "click",
-        function () {
-
-            if (timerInterval !== null) {
-                return;
-            }
-
-
-            isRunning = true;
-
-            minutesInput.disabled = true;
-
-            start.textContent = "Running...";
-
-
-            timerInterval =
-                setInterval(
-                    function () {
-
-                        if (timeLeft > 0) {
-
-                            timeLeft--;
-
-                            updateDisplay();
-
-                        }
-
-
-                        if (timeLeft <= 0) {
-
-                            clearInterval(
-                                timerInterval
-                            );
-
-                            timerInterval = null;
-
-                            isRunning = false;
-
-                            minutesInput.disabled = false;
-
-                            start.textContent = "Start";
-
-                            alert(
-                                "🎉 Time's up! Take a break."
-                            );
-
-                        }
-
-                    },
-                    1000
+            const minutes =
+                Math.floor(
+                    timeLeft / 60
                 );
 
+            const seconds =
+                timeLeft % 60;
+
+
+            display.textContent =
+                `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
         }
-    );
 
 
-    // Pause
+        // Change timer time
 
-    pause.addEventListener(
-        "click",
-        function () {
+        minutesInput.addEventListener(
+            "change",
+            function () {
 
-            if (timerInterval !== null) {
+                if (isRunning) {
+                    return;
+                }
+
+
+                let minutes =
+                    parseInt(
+                        this.value
+                    );
+
+
+                if (
+                    Number.isNaN(minutes)
+                ) {
+
+                    minutes = 25;
+
+                }
+
+
+                if (minutes < 1) {
+
+                    minutes = 1;
+
+                }
+
+
+                if (minutes > 120) {
+
+                    minutes = 120;
+
+                }
+
+
+                this.value =
+                    minutes;
+
+                timeLeft =
+                    minutes * 60;
+
+                updateDisplay();
+
+            }
+        );
+
+
+        // Start timer
+
+        start.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    timerInterval !== null
+                ) {
+
+                    return;
+
+                }
+
+
+                isRunning =
+                    true;
+
+                minutesInput.disabled =
+                    true;
+
+                start.textContent =
+                    "Running...";
+
+
+                timerInterval =
+                    setInterval(
+                        function () {
+
+                            if (
+                                timeLeft > 0
+                            ) {
+
+                                timeLeft--;
+
+                                updateDisplay();
+
+                            }
+
+
+                            if (
+                                timeLeft <= 0
+                            ) {
+
+                                clearInterval(
+                                    timerInterval
+                                );
+
+                                timerInterval =
+                                    null;
+
+                                isRunning =
+                                    false;
+
+                                minutesInput.disabled =
+                                    false;
+
+                                start.textContent =
+                                    "Start";
+
+
+                                alert(
+                                    "🎉 Time's up! Take a break."
+                                );
+
+                            }
+
+                        },
+                        1000
+                    );
+
+            }
+        );
+
+
+        // Pause timer
+
+        pause.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    timerInterval !== null
+                ) {
+
+                    clearInterval(
+                        timerInterval
+                    );
+
+                    timerInterval =
+                        null;
+
+                    isRunning =
+                        false;
+
+                    minutesInput.disabled =
+                        false;
+
+                    start.textContent =
+                        "Resume";
+
+                }
+
+            }
+        );
+
+
+        // Reset timer
+
+        reset.addEventListener(
+            "click",
+            function () {
 
                 clearInterval(
                     timerInterval
                 );
 
-                timerInterval = null;
+                timerInterval =
+                    null;
 
-                isRunning = false;
+                isRunning =
+                    false;
 
-                minutesInput.disabled = false;
+                minutesInput.disabled =
+                    false;
 
-                start.textContent = "Resume";
+                start.textContent =
+                    "Start";
+
+
+                let minutes =
+                    parseInt(
+                        minutesInput.value
+                    );
+
+
+                if (
+                    Number.isNaN(minutes) ||
+                    minutes < 1
+                ) {
+
+                    minutes = 25;
+
+                    minutesInput.value =
+                        25;
+
+                }
+
+
+                if (minutes > 120) {
+
+                    minutes = 120;
+
+                    minutesInput.value =
+                        120;
+
+                }
+
+
+                timeLeft =
+                    minutes * 60;
+
+                updateDisplay();
 
             }
-
-        }
-    );
+        );
 
 
-    // Reset
+        updateDisplay();
 
-    reset.addEventListener(
-        "click",
-        function () {
-
-            clearInterval(
-                timerInterval
-            );
-
-            timerInterval = null;
-
-            isRunning = false;
-
-            minutesInput.disabled = false;
-
-            start.textContent = "Start";
-
-
-            let minutes =
-                parseInt(
-                    minutesInput.value
-                );
-
-
-            if (
-                Number.isNaN(minutes) ||
-                minutes < 1
-            ) {
-
-                minutes = 25;
-
-                minutesInput.value = 25;
-
-            }
-
-
-            timeLeft = minutes * 60;
-
-            updateDisplay();
-
-        }
-    );
-
-
-    updateDisplay();
-
-}
+    }
 
 
     // =================================================
@@ -863,16 +1173,27 @@ function setupTool(toolName) {
                 const words =
                     text.trim() === ""
                         ? 0
-                        : text.trim().split(/\s+/).length;
+                        : text
+                            .trim()
+                            .split(/\s+/)
+                            .length;
 
 
                 const sentences =
                     text.trim() === ""
                         ? 0
-                        : text.split(/[.!?]+/)
+                        : text
+                            .split(/[.!?]+/)
                             .filter(
-                                sentence =>
-                                    sentence.trim().length > 0
+                                function (sentence) {
+
+                                    return (
+                                        sentence
+                                            .trim()
+                                            .length > 0
+                                    );
+
+                                }
                             )
                             .length;
 
@@ -916,9 +1237,11 @@ function setupTool(toolName) {
 
                 let length =
                     parseInt(
-                        document.getElementById(
-                            "passwordLength"
-                        ).value
+                        document
+                            .getElementById(
+                                "passwordLength"
+                            )
+                            .value
                     );
 
 
@@ -943,7 +1266,8 @@ function setupTool(toolName) {
                     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
 
 
-                let password = "";
+                let password =
+                    "";
 
 
                 for (
@@ -960,7 +1284,9 @@ function setupTool(toolName) {
 
 
                     password +=
-                        characters[randomIndex];
+                        characters[
+                            randomIndex
+                        ];
 
                 }
 
@@ -985,9 +1311,11 @@ function setupTool(toolName) {
 
                 try {
 
-                    await navigator.clipboard.writeText(
-                        output.value
-                    );
+                    await navigator
+                        .clipboard
+                        .writeText(
+                            output.value
+                        );
 
 
                     copy.textContent =
@@ -1100,28 +1428,44 @@ closeModal.addEventListener(
     "click",
     function () {
 
-        toolModal.classList.add("hidden");
+        toolModal.classList.add(
+            "hidden"
+        );
 
-        modalContent.innerHTML = "";
+        modalContent.innerHTML =
+            "";
 
     }
 );
 
 
-// Close when clicking outside modal
+// =====================================================
+// CLOSE MODAL - OVERLAY
+// =====================================================
 
-document
-    .querySelector(".modal-overlay")
-    .addEventListener(
+const modalOverlay =
+    document.querySelector(
+        ".modal-overlay"
+    );
+
+
+if (modalOverlay) {
+
+    modalOverlay.addEventListener(
         "click",
         function () {
 
-            toolModal.classList.add("hidden");
+            toolModal.classList.add(
+                "hidden"
+            );
 
-            modalContent.innerHTML = "";
+            modalContent.innerHTML =
+                "";
 
         }
     );
+
+}
 
 
 // =====================================================
@@ -1134,12 +1478,17 @@ document.addEventListener(
 
         if (
             event.key === "Escape" &&
-            !toolModal.classList.contains("hidden")
+            !toolModal.classList.contains(
+                "hidden"
+            )
         ) {
 
-            toolModal.classList.add("hidden");
+            toolModal.classList.add(
+                "hidden"
+            );
 
-            modalContent.innerHTML = "";
+            modalContent.innerHTML =
+                "";
 
         }
 
@@ -1155,7 +1504,9 @@ themeToggle.addEventListener(
     "click",
     function () {
 
-        document.body.classList.toggle("dark");
+        document.body.classList.toggle(
+            "dark"
+        );
 
 
         const darkMode =
@@ -1165,7 +1516,9 @@ themeToggle.addEventListener(
 
 
         themeToggle.textContent =
-            darkMode ? "☀️" : "🌙";
+            darkMode
+                ? "☀️"
+                : "🌙";
 
 
         localStorage.setItem(
@@ -1177,7 +1530,9 @@ themeToggle.addEventListener(
 );
 
 
-// Load saved theme
+// =====================================================
+// LOAD SAVED DARK MODE
+// =====================================================
 
 const savedTheme =
     localStorage.getItem(
@@ -1187,11 +1542,21 @@ const savedTheme =
 
 if (savedTheme === "true") {
 
-    document.body.classList.add("dark");
+    document.body.classList.add(
+        "dark"
+    );
 
-    themeToggle.textContent = "☀️";
+    themeToggle.textContent =
+        "☀️";
 
 }
+
+
+// =====================================================
+// INITIAL TOOL COUNT
+// =====================================================
+
+filterTools();
 
 
 // =====================================================
@@ -1199,5 +1564,5 @@ if (savedTheme === "true") {
 // =====================================================
 
 console.log(
-    "🚀 StudentHub JavaScript loaded successfully!"
+    "🚀 StudentHub JavaScript V2 loaded successfully!"
 );

@@ -1,52 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
-        content="Student Utility Hub - Free calculators, productivity tools and useful utilities for students."
+        content="StudentHub - Free calculators, productivity tools and useful utilities for students."
     >
 
-    <title>Student Utility Hub | Free Student Tools</title>
+    <meta
+        name="keywords"
+        content="student tools, calculator, CGPA calculator, percentage calculator, pomodoro timer, word counter"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <title>StudentHub — Free Tools for Students</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+    <!-- ==================================================
+         HEADER
+    =================================================== -->
 
     <header class="header">
 
         <div class="container navbar">
 
-            <a href="#" class="logo">
-                <span class="logo-icon">⚡</span>
-                Student<span>Hub</span>
+            <a
+                href="#"
+                class="logo"
+            >
+
+                <span class="logo-icon">
+                    ⚡
+                </span>
+
+                <span class="logo-text">
+                    Student<span>Hub</span>
+                </span>
+
             </a>
 
-            <nav class="nav">
-                <a href="#tools">Tools</a>
-                <a href="#about">About</a>
 
-                <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
+            <nav
+                class="nav"
+                id="mainNav"
+            >
+
+                <a href="#tools">
+                    Tools
+                </a>
+
+                <a href="#categories">
+                    Categories
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+                <button
+                    id="themeToggle"
+                    class="theme-btn"
+                    aria-label="Toggle dark mode"
+                >
                     🌙
                 </button>
+
             </nav>
+
+
+            <button
+                id="mobileMenuBtn"
+                class="mobile-menu-btn"
+                aria-label="Open menu"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
 
         </div>
 
     </header>
 
 
-    <!-- ================= HERO ================= -->
+    <!-- ==================================================
+         MAIN
+    =================================================== -->
 
     <main>
 
+
+        <!-- ==================================================
+             HERO
+        =================================================== -->
+
         <section class="hero">
+
+            <div class="hero-glow hero-glow-one"></div>
+
+            <div class="hero-glow hero-glow-two"></div>
+
 
             <div class="container hero-content">
 
@@ -54,14 +122,23 @@
                     ✨ Free tools made for students
                 </div>
 
+
                 <h1>
-                    Everything you need,
-                    <span>in one place.</span>
+
+                    Study smarter.
+                    <span>
+                        Get things done.
+                    </span>
+
                 </h1>
 
+
                 <p>
-                    Free, simple and fast tools to help you study,
-                    calculate, create and get things done.
+
+                    Simple, fast and free tools for
+                    studying, calculating, creating
+                    and staying productive.
+
                 </p>
 
 
@@ -69,14 +146,71 @@
 
                 <div class="search-box">
 
-                    <span class="search-icon">🔍</span>
+                    <span class="search-icon">
+                        🔍
+                    </span>
 
                     <input
                         type="text"
                         id="toolSearch"
-                        placeholder="Search a tool..."
+                        placeholder="Search for a tool..."
                         autocomplete="off"
                     >
+
+                    <span class="search-shortcut">
+                        Ctrl K
+                    </span>
+
+                </div>
+
+
+                <!-- Hero stats -->
+
+                <div class="hero-stats">
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            6+
+                        </strong>
+
+                        <span>
+                            Free tools
+                        </span>
+
+                    </div>
+
+
+                    <div class="hero-stat-divider"></div>
+
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            100%
+                        </strong>
+
+                        <span>
+                            Free
+                        </span>
+
+                    </div>
+
+
+                    <div class="hero-stat-divider"></div>
+
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            ⚡
+                        </strong>
+
+                        <span>
+                            Fast
+                        </span>
+
+                    </div>
 
                 </div>
 
@@ -85,43 +219,185 @@
         </section>
 
 
-        <!-- ================= TOOLS ================= -->
+        <!-- ==================================================
+             CATEGORIES
+        =================================================== -->
 
-        <section class="tools-section" id="tools">
+        <section
+            class="categories-section"
+            id="categories"
+        >
 
             <div class="container">
 
                 <div class="section-heading">
 
                     <div>
-                        <p class="section-label">TOOLS</p>
+
+                        <p class="section-label">
+                            EXPLORE
+                        </p>
+
+                        <h2>
+                            What do you need?
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="category-grid">
+
+
+                    <button
+                        class="category-card"
+                        data-category="all"
+                    >
+
+                        <span class="category-icon">
+                            ✨
+                        </span>
+
+                        <span>
+                            All Tools
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="category-card"
+                        data-category="study"
+                    >
+
+                        <span class="category-icon">
+                            🎓
+                        </span>
+
+                        <span>
+                            Study
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="category-card"
+                        data-category="productivity"
+                    >
+
+                        <span class="category-icon">
+                            ⚡
+                        </span>
+
+                        <span>
+                            Productivity
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="category-card"
+                        data-category="utility"
+                    >
+
+                        <span class="category-icon">
+                            🛠️
+                        </span>
+
+                        <span>
+                            Utilities
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             TOOLS
+        =================================================== -->
+
+        <section
+            class="tools-section"
+            id="tools"
+        >
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="section-label">
+                            TOOLS
+                        </p>
 
                         <h2>
                             Popular student tools
                         </h2>
+
+                        <p class="section-description">
+                            Everything you need, without
+                            complicated apps or sign-ups.
+                        </p>
+
                     </div>
 
+
                     <p class="tool-count">
-                        <span id="toolCount">6</span> tools
+
+                        <span id="toolCount">
+                            6
+                        </span>
+
+                        tools
+
                     </p>
 
                 </div>
 
 
-                <div class="tools-grid" id="toolsGrid">
+                <div
+                    class="tools-grid"
+                    id="toolsGrid"
+                >
 
 
-                    <!-- Percentage Calculator -->
+                    <!-- Percentage -->
 
-                    <article class="tool-card" data-name="percentage calculator">
+                    <article
+                        class="tool-card"
+                        data-name="percentage calculator"
+                        data-category="study utility"
+                    >
 
-                        <div class="tool-icon blue">
-                            %
+                        <div class="tool-card-top">
+
+                            <div class="tool-icon blue">
+                                %
+                            </div>
+
+                            <span class="tool-badge">
+                                Popular
+                            </span>
+
                         </div>
+
 
                         <div class="tool-content">
 
-                            <h3>Percentage Calculator</h3>
+                            <h3>
+                                Percentage Calculator
+                            </h3>
 
                             <p>
                                 Quickly calculate percentages,
@@ -132,7 +408,8 @@
                                 class="open-tool"
                                 data-tool="percentage"
                             >
-                                Open Tool →
+                                Open Tool
+                                <span>→</span>
                             </button>
 
                         </div>
@@ -140,17 +417,32 @@
                     </article>
 
 
-                    <!-- CGPA Calculator -->
+                    <!-- CGPA -->
 
-                    <article class="tool-card" data-name="cgpa calculator">
+                    <article
+                        class="tool-card"
+                        data-name="cgpa calculator gpa"
+                        data-category="study"
+                    >
 
-                        <div class="tool-icon purple">
-                            🎓
+                        <div class="tool-card-top">
+
+                            <div class="tool-icon purple">
+                                🎓
+                            </div>
+
+                            <span class="tool-badge">
+                                Study
+                            </span>
+
                         </div>
+
 
                         <div class="tool-content">
 
-                            <h3>CGPA Calculator</h3>
+                            <h3>
+                                CGPA Calculator
+                            </h3>
 
                             <p>
                                 Calculate your CGPA quickly
@@ -161,7 +453,8 @@
                                 class="open-tool"
                                 data-tool="cgpa"
                             >
-                                Open Tool →
+                                Open Tool
+                                <span>→</span>
                             </button>
 
                         </div>
@@ -171,26 +464,42 @@
 
                     <!-- Pomodoro -->
 
-                    <article class="tool-card" data-name="pomodoro timer">
+                    <article
+                        class="tool-card"
+                        data-name="pomodoro timer focus study"
+                        data-category="productivity study"
+                    >
 
-                        <div class="tool-icon orange">
-                            ⏱️
+                        <div class="tool-card-top">
+
+                            <div class="tool-icon orange">
+                                ⏱️
+                            </div>
+
+                            <span class="tool-badge">
+                                Focus
+                            </span>
+
                         </div>
+
 
                         <div class="tool-content">
 
-                            <h3>Pomodoro Timer</h3>
+                            <h3>
+                                Pomodoro Timer
+                            </h3>
 
                             <p>
                                 Focus on your studies with
-                                the Pomodoro technique.
+                                customizable sessions.
                             </p>
 
                             <button
                                 class="open-tool"
                                 data-tool="pomodoro"
                             >
-                                Open Tool →
+                                Open Tool
+                                <span>→</span>
                             </button>
 
                         </div>
@@ -200,26 +509,42 @@
 
                     <!-- Word Counter -->
 
-                    <article class="tool-card" data-name="word counter">
+                    <article
+                        class="tool-card"
+                        data-name="word counter text counter characters"
+                        data-category="utility productivity"
+                    >
 
-                        <div class="tool-icon green">
-                            📝
+                        <div class="tool-card-top">
+
+                            <div class="tool-icon green">
+                                📝
+                            </div>
+
+                            <span class="tool-badge">
+                                Writing
+                            </span>
+
                         </div>
+
 
                         <div class="tool-content">
 
-                            <h3>Word Counter</h3>
+                            <h3>
+                                Word Counter
+                            </h3>
 
                             <p>
                                 Count words, characters and
-                                sentences in your text.
+                                sentences instantly.
                             </p>
 
                             <button
                                 class="open-tool"
                                 data-tool="word"
                             >
-                                Open Tool →
+                                Open Tool
+                                <span>→</span>
                             </button>
 
                         </div>
@@ -227,17 +552,32 @@
                     </article>
 
 
-                    <!-- Password Generator -->
+                    <!-- Password -->
 
-                    <article class="tool-card" data-name="password generator">
+                    <article
+                        class="tool-card"
+                        data-name="password generator secure password"
+                        data-category="utility"
+                    >
 
-                        <div class="tool-icon red">
-                            🔐
+                        <div class="tool-card-top">
+
+                            <div class="tool-icon red">
+                                🔐
+                            </div>
+
+                            <span class="tool-badge">
+                                Security
+                            </span>
+
                         </div>
+
 
                         <div class="tool-content">
 
-                            <h3>Password Generator</h3>
+                            <h3>
+                                Password Generator
+                            </h3>
 
                             <p>
                                 Generate strong and secure
@@ -248,7 +588,8 @@
                                 class="open-tool"
                                 data-tool="password"
                             >
-                                Open Tool →
+                                Open Tool
+                                <span>→</span>
                             </button>
 
                         </div>
@@ -256,17 +597,32 @@
                     </article>
 
 
-                    <!-- QR Generator -->
+                    <!-- QR -->
 
-                    <article class="tool-card" data-name="qr code generator">
+                    <article
+                        class="tool-card"
+                        data-name="qr code generator qr"
+                        data-category="utility"
+                    >
 
-                        <div class="tool-icon cyan">
-                            ▦
+                        <div class="tool-card-top">
+
+                            <div class="tool-icon cyan">
+                                ▦
+                            </div>
+
+                            <span class="tool-badge">
+                                Utility
+                            </span>
+
                         </div>
+
 
                         <div class="tool-content">
 
-                            <h3>QR Code Generator</h3>
+                            <h3>
+                                QR Code Generator
+                            </h3>
 
                             <p>
                                 Turn text or links into a
@@ -277,7 +633,8 @@
                                 class="open-tool"
                                 data-tool="qr"
                             >
-                                Open Tool →
+                                Open Tool
+                                <span>→</span>
                             </button>
 
                         </div>
@@ -290,11 +647,18 @@
 
                 <!-- No results -->
 
-                <div id="noResults" class="no-results hidden">
+                <div
+                    id="noResults"
+                    class="no-results hidden"
+                >
 
-                    <div>🔎</div>
+                    <div class="no-results-icon">
+                        🔎
+                    </div>
 
-                    <h3>No tools found</h3>
+                    <h3>
+                        No tools found
+                    </h3>
 
                     <p>
                         Try searching for another tool.
@@ -307,15 +671,106 @@
         </section>
 
 
-        <!-- ================= ABOUT ================= -->
+        <!-- ==================================================
+             WHY STUDENTHUB
+        =================================================== -->
 
-        <section class="about-section" id="about">
+        <section class="why-section">
+
+            <div class="container">
+
+                <div class="why-header">
+
+                    <p class="section-label">
+                        WHY STUDENTHUB?
+                    </p>
+
+                    <h2>
+                        Built to make student life easier.
+                    </h2>
+
+                </div>
+
+
+                <div class="why-grid">
+
+
+                    <div class="why-card">
+
+                        <div class="why-icon">
+                            ⚡
+                        </div>
+
+                        <h3>
+                            Fast
+                        </h3>
+
+                        <p>
+                            Open a tool and get your result
+                            without unnecessary steps.
+                        </p>
+
+                    </div>
+
+
+                    <div class="why-card">
+
+                        <div class="why-icon">
+                            🆓
+                        </div>
+
+                        <h3>
+                            Free
+                        </h3>
+
+                        <p>
+                            Useful everyday tools without
+                            forcing you to create an account.
+                        </p>
+
+                    </div>
+
+
+                    <div class="why-card">
+
+                        <div class="why-icon">
+                            📱
+                        </div>
+
+                        <h3>
+                            Mobile Friendly
+                        </h3>
+
+                        <p>
+                            Use your favorite tools from
+                            your phone, tablet or laptop.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             ABOUT
+        =================================================== -->
+
+        <section
+            class="about-section"
+            id="about"
+        >
 
             <div class="container about-content">
 
                 <div class="about-icon">
                     ⚡
                 </div>
+
 
                 <div>
 
@@ -343,11 +798,17 @@
     </main>
 
 
-    <!-- ================= TOOL MODAL ================= -->
+    <!-- ==================================================
+         TOOL MODAL
+    =================================================== -->
 
-    <div id="toolModal" class="modal hidden">
+    <div
+        id="toolModal"
+        class="modal hidden"
+    >
 
         <div class="modal-overlay"></div>
+
 
         <div class="modal-box">
 
@@ -359,6 +820,7 @@
                 ×
             </button>
 
+
             <div id="modalContent"></div>
 
         </div>
@@ -366,19 +828,61 @@
     </div>
 
 
-    <!-- ================= FOOTER ================= -->
+    <!-- ==================================================
+         FOOTER
+    =================================================== -->
 
     <footer class="footer">
 
         <div class="container footer-content">
 
-            <p>
-                © 2026 StudentHub. Built for students.
-            </p>
+            <div class="footer-brand">
 
-            <p>
-                Free • Fast • Simple
-            </p>
+                <div class="footer-logo">
+
+                    <span class="logo-icon">
+                        ⚡
+                    </span>
+
+                    Student<span>Hub</span>
+
+                </div>
+
+                <p>
+                    Simple tools for smarter students.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#tools">
+                    Tools
+                </a>
+
+                <a href="#categories">
+                    Categories
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 StudentHub. All rights reserved.
+                </p>
+
+                <p>
+                    Free • Fast • Simple
+                </p>
+
+            </div>
 
         </div>
 
@@ -388,4 +892,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>
