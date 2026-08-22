@@ -1,6 +1,6 @@
 // =====================================================
-// STUDENT HUB
-// Main JavaScript
+// STUDENTHUB
+// COMPLETE JAVASCRIPT V3
 // =====================================================
 
 
@@ -10,9 +10,6 @@
 
 const toolSearch =
     document.getElementById("toolSearch");
-
-const toolsGrid =
-    document.getElementById("toolsGrid");
 
 const toolCards =
     document.querySelectorAll(".tool-card");
@@ -46,14 +43,14 @@ const mainNav =
 
 
 // =====================================================
-// CATEGORY STATE
+// CATEGORY
 // =====================================================
 
 let activeCategory = "all";
 
 
 // =====================================================
-// TOOL SEARCH + CATEGORY FILTER
+// SEARCH + FILTER
 // =====================================================
 
 function filterTools() {
@@ -69,28 +66,22 @@ function filterTools() {
     toolCards.forEach(function (card) {
 
         const toolName =
-            card.dataset.name
+            (card.dataset.name || "")
                 .toLowerCase();
 
         const categories =
-            card.dataset.category
+            (card.dataset.category || "")
                 .toLowerCase();
 
-
-        // Search match
 
         const matchesSearch =
             toolName.includes(searchText);
 
 
-        // Category match
-
         const matchesCategory =
             activeCategory === "all" ||
             categories.includes(activeCategory);
 
-
-        // Show / hide card
 
         if (
             matchesSearch &&
@@ -110,13 +101,9 @@ function filterTools() {
     });
 
 
-    // Update count
-
     toolCount.textContent =
         visibleTools;
 
-
-    // No results
 
     if (visibleTools === 0) {
 
@@ -135,12 +122,14 @@ function filterTools() {
 }
 
 
-// Search typing
+if (toolSearch) {
 
-toolSearch.addEventListener(
-    "input",
-    filterTools
-);
+    toolSearch.addEventListener(
+        "input",
+        filterTools
+    );
+
+}
 
 
 // =====================================================
@@ -158,8 +147,6 @@ categoryButtons.forEach(
                     this.dataset.category;
 
 
-                // Remove active class
-
                 categoryButtons.forEach(
                     function (btn) {
 
@@ -171,25 +158,27 @@ categoryButtons.forEach(
                 );
 
 
-                // Add active class
-
                 this.classList.add(
                     "active"
                 );
 
 
-                // Filter tools
-
                 filterTools();
 
 
-                // Scroll to tools
+                const toolsSection =
+                    document.getElementById(
+                        "tools"
+                    );
 
-                document
-                    .getElementById("tools")
-                    .scrollIntoView({
+
+                if (toolsSection) {
+
+                    toolsSection.scrollIntoView({
                         behavior: "smooth"
                     });
+
+                }
 
             }
         );
@@ -199,7 +188,7 @@ categoryButtons.forEach(
 
 
 // =====================================================
-// CTRL + K SEARCH
+// CTRL + K
 // =====================================================
 
 document.addEventListener(
@@ -213,9 +202,13 @@ document.addEventListener(
 
             event.preventDefault();
 
-            toolSearch.focus();
+            if (toolSearch) {
 
-            toolSearch.select();
+                toolSearch.focus();
+
+                toolSearch.select();
+
+            }
 
         }
 
@@ -227,7 +220,10 @@ document.addEventListener(
 // MOBILE MENU
 // =====================================================
 
-if (mobileMenuBtn && mainNav) {
+if (
+    mobileMenuBtn &&
+    mainNav
+) {
 
     mobileMenuBtn.addEventListener(
         "click",
@@ -251,8 +247,6 @@ if (mobileMenuBtn && mainNav) {
         }
     );
 
-
-    // Close menu when link is clicked
 
     const navLinks =
         mainNav.querySelectorAll("a");
@@ -293,7 +287,9 @@ if (mobileMenuBtn && mainNav) {
 // =====================================================
 
 const openToolButtons =
-    document.querySelectorAll(".open-tool");
+    document.querySelectorAll(
+        ".open-tool"
+    );
 
 
 openToolButtons.forEach(
@@ -306,6 +302,7 @@ openToolButtons.forEach(
                 const toolName =
                     this.dataset.tool;
 
+
                 openTool(toolName);
 
             }
@@ -316,7 +313,7 @@ openToolButtons.forEach(
 
 
 // =====================================================
-// OPEN TOOL FUNCTION
+// OPEN TOOL
 // =====================================================
 
 function openTool(toolName) {
@@ -325,7 +322,7 @@ function openTool(toolName) {
 
 
     // =================================================
-    // PERCENTAGE CALCULATOR
+    // PERCENTAGE
     // =================================================
 
     if (toolName === "percentage") {
@@ -335,8 +332,7 @@ function openTool(toolName) {
             <h2>🧮 Percentage Calculator</h2>
 
             <p>
-                Calculate what percentage one number
-                is of another number.
+                Calculate a percentage of any number.
             </p>
 
             <div class="tool-form">
@@ -372,7 +368,7 @@ function openTool(toolName) {
                     id="percentageResult"
                     class="result-box"
                 >
-                    Result will appear here
+                    Result will appear here.
                 </div>
 
             </div>
@@ -383,7 +379,7 @@ function openTool(toolName) {
 
 
     // =================================================
-    // CGPA CALCULATOR
+    // CGPA
     // =================================================
 
     else if (toolName === "cgpa") {
@@ -393,8 +389,8 @@ function openTool(toolName) {
             <h2>🎓 CGPA Calculator</h2>
 
             <p>
-                Enter your semester GPAs to calculate
-                your average CGPA.
+                Calculate your average CGPA from
+                semester GPAs.
             </p>
 
             <div class="tool-form">
@@ -462,7 +458,7 @@ function openTool(toolName) {
                     id="cgpaResult"
                     class="result-box"
                 >
-                    Your CGPA will appear here
+                    Your CGPA will appear here.
                 </div>
 
             </div>
@@ -473,7 +469,7 @@ function openTool(toolName) {
 
 
     // =================================================
-    // POMODORO TIMER
+    // POMODORO
     // =================================================
 
     else if (toolName === "pomodoro") {
@@ -483,7 +479,8 @@ function openTool(toolName) {
             <h2>⏱️ Pomodoro Timer</h2>
 
             <p>
-                Set your focus time and start studying.
+                Focus on your studies with a
+                customizable timer.
             </p>
 
             <div class="tool-form">
@@ -498,7 +495,6 @@ function openTool(toolName) {
                     value="25"
                     min="1"
                     max="120"
-                    placeholder="Example: 25"
                 >
 
             </div>
@@ -555,7 +551,7 @@ function openTool(toolName) {
             <h2>📝 Word Counter</h2>
 
             <p>
-                Type or paste your text below.
+                Count words, characters and sentences.
             </p>
 
             <div class="tool-form">
@@ -570,7 +566,7 @@ function openTool(toolName) {
                     id="wordResult"
                     class="result-box"
                 >
-                    Words: 0 | Characters: 0
+                    Words: 0 | Characters: 0 | Sentences: 0
                 </div>
 
             </div>
@@ -581,7 +577,7 @@ function openTool(toolName) {
 
 
     // =================================================
-    // PASSWORD GENERATOR
+    // PASSWORD
     // =================================================
 
     else if (toolName === "password") {
@@ -641,7 +637,7 @@ function openTool(toolName) {
 
 
     // =================================================
-    // QR CODE GENERATOR
+    // QR CODE
     // =================================================
 
     else if (toolName === "qr") {
@@ -651,7 +647,7 @@ function openTool(toolName) {
             <h2>🔳 QR Code Generator</h2>
 
             <p>
-                Enter text or a website URL.
+                Convert text or a URL into a QR code.
             </p>
 
             <div class="tool-form">
@@ -673,8 +669,313 @@ function openTool(toolName) {
                     id="qrResult"
                     class="result-box"
                 >
-                    QR code will appear here
+                    QR code will appear here.
                 </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    // =================================================
+    // AGE CALCULATOR
+    // =================================================
+
+    else if (toolName === "age") {
+
+        content = `
+
+            <h2>🎂 Age Calculator</h2>
+
+            <p>
+                Calculate your exact age from your
+                date of birth.
+            </p>
+
+            <div class="tool-form">
+
+                <label>
+                    Date of Birth
+                </label>
+
+                <input
+                    type="date"
+                    id="dateOfBirth"
+                >
+
+                <button
+                    class="primary-btn"
+                    id="calculateAge"
+                >
+                    Calculate Age
+                </button>
+
+                <div
+                    id="ageResult"
+                    class="result-box"
+                >
+                    Your exact age will appear here.
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    // =================================================
+    // DISCOUNT CALCULATOR
+    // =================================================
+
+    else if (toolName === "discount") {
+
+        content = `
+
+            <h2>💰 Discount Calculator</h2>
+
+            <p>
+                Calculate your savings and final price.
+            </p>
+
+            <div class="tool-form">
+
+                <label>
+                    Original Price
+                </label>
+
+                <input
+                    type="number"
+                    id="originalPrice"
+                    min="0"
+                    step="0.01"
+                    placeholder="Example: 1000"
+                >
+
+                <label>
+                    Discount Percentage
+                </label>
+
+                <input
+                    type="number"
+                    id="discountPercent"
+                    min="0"
+                    max="100"
+                    step="0.01"
+                    placeholder="Example: 20"
+                >
+
+                <button
+                    class="primary-btn"
+                    id="calculateDiscount"
+                >
+                    Calculate Discount
+                </button>
+
+                <div
+                    id="discountResult"
+                    class="result-box"
+                >
+                    Your result will appear here.
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    // =================================================
+    // BMI CALCULATOR
+    // =================================================
+
+    else if (toolName === "bmi") {
+
+        content = `
+
+            <h2>⚖️ BMI Calculator</h2>
+
+            <p>
+                Calculate your Body Mass Index
+                using height and weight.
+            </p>
+
+            <div class="tool-form">
+
+                <label>
+                    Height (cm)
+                </label>
+
+                <input
+                    type="number"
+                    id="bmiHeight"
+                    min="50"
+                    max="250"
+                    step="0.1"
+                    placeholder="Example: 170"
+                >
+
+                <label>
+                    Weight (kg)
+                </label>
+
+                <input
+                    type="number"
+                    id="bmiWeight"
+                    min="10"
+                    max="300"
+                    step="0.1"
+                    placeholder="Example: 65"
+                >
+
+                <button
+                    class="primary-btn"
+                    id="calculateBMI"
+                >
+                    Calculate BMI
+                </button>
+
+                <div
+                    id="bmiResult"
+                    class="result-box"
+                >
+                    Your BMI result will appear here.
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    // =================================================
+    // AI PROMPT GENERATOR
+    // =================================================
+
+    else if (toolName === "prompt") {
+
+        content = `
+
+            <h2>🤖 AI Prompt Generator</h2>
+
+            <p>
+                Create a useful AI prompt for study,
+                coding, writing, research and more.
+            </p>
+
+            <div class="tool-form">
+
+                <label>
+                    Prompt Type
+                </label>
+
+                <select id="promptType">
+
+                    <option value="study">
+                        📚 Study
+                    </option>
+
+                    <option value="coding">
+                        💻 Coding
+                    </option>
+
+                    <option value="writing">
+                        ✍️ Writing
+                    </option>
+
+                    <option value="research">
+                        🔬 Research
+                    </option>
+
+                    <option value="resume">
+                        📄 Resume
+                    </option>
+
+                    <option value="presentation">
+                        🎤 Presentation
+                    </option>
+
+                </select>
+
+
+                <label>
+                    Topic
+                </label>
+
+                <input
+                    type="text"
+                    id="promptTopic"
+                    placeholder="Example: Physics"
+                >
+
+
+                <label>
+                    Goal
+                </label>
+
+                <textarea
+                    id="promptGoal"
+                    rows="4"
+                    placeholder="What do you want the AI to help you with?"
+                ></textarea>
+
+
+                <label>
+                    Level
+                </label>
+
+                <select id="promptLevel">
+
+                    <option value="beginner">
+                        Beginner
+                    </option>
+
+                    <option value="intermediate">
+                        Intermediate
+                    </option>
+
+                    <option value="advanced">
+                        Advanced
+                    </option>
+
+                </select>
+
+
+                <button
+                    class="primary-btn"
+                    id="generatePrompt"
+                >
+                    Generate Prompt
+                </button>
+
+
+                <div
+                    id="promptResult"
+                    class="result-box"
+                    style="
+                        text-align:left;
+                        white-space:pre-wrap;
+                    "
+                >
+                    Your AI prompt will appear here.
+                </div>
+
+
+                <button
+                    class="copy-btn"
+                    id="copyPrompt"
+                    style="
+                        width:100%;
+                        margin-top:10px;
+                        padding:12px;
+                    "
+                >
+                    Copy Prompt
+                </button>
 
             </div>
 
@@ -694,8 +995,6 @@ function openTool(toolName) {
         "hidden"
     );
 
-
-    // Activate selected tool
 
     setupTool(toolName);
 
@@ -720,6 +1019,11 @@ function setupTool(toolName) {
                 "calculatePercentage"
             );
 
+        const result =
+            document.getElementById(
+                "percentageResult"
+            );
+
 
         calculate.addEventListener(
             "click",
@@ -727,27 +1031,16 @@ function setupTool(toolName) {
 
                 const percentage =
                     parseFloat(
-                        document
-                            .getElementById(
-                                "percentageValue"
-                            )
-                            .value
+                        document.getElementById(
+                            "percentageValue"
+                        ).value
                     );
-
 
                 const number =
                     parseFloat(
-                        document
-                            .getElementById(
-                                "percentageNumber"
-                            )
-                            .value
-                    );
-
-
-                const result =
-                    document.getElementById(
-                        "percentageResult"
+                        document.getElementById(
+                            "percentageNumber"
+                        ).value
                     );
 
 
@@ -770,6 +1063,382 @@ function setupTool(toolName) {
 
                 result.textContent =
                     `${percentage}% of ${number} = ${answer}`;
+
+            }
+        );
+
+    }
+
+
+    // =================================================
+    // AGE
+    // =================================================
+
+    else if (toolName === "age") {
+
+        const dobInput =
+            document.getElementById(
+                "dateOfBirth"
+            );
+
+        const calculateButton =
+            document.getElementById(
+                "calculateAge"
+            );
+
+        const result =
+            document.getElementById(
+                "ageResult"
+            );
+
+
+        const today =
+            new Date();
+
+
+        const todayString =
+            today.toISOString()
+                .split("T")[0];
+
+
+        dobInput.max =
+            todayString;
+
+
+        calculateButton.addEventListener(
+            "click",
+            function () {
+
+                if (!dobInput.value) {
+
+                    result.textContent =
+                        "Please select your date of birth.";
+
+                    return;
+
+                }
+
+
+                const birthDate =
+                    new Date(
+                        dobInput.value +
+                        "T00:00:00"
+                    );
+
+
+                const currentDate =
+                    new Date();
+
+
+                if (
+                    birthDate >
+                    currentDate
+                ) {
+
+                    result.textContent =
+                        "Date of birth cannot be in the future.";
+
+                    return;
+
+                }
+
+
+                let years =
+                    currentDate.getFullYear() -
+                    birthDate.getFullYear();
+
+
+                let months =
+                    currentDate.getMonth() -
+                    birthDate.getMonth();
+
+
+                let days =
+                    currentDate.getDate() -
+                    birthDate.getDate();
+
+
+                if (days < 0) {
+
+                    months--;
+
+
+                    const previousMonth =
+                        new Date(
+                            currentDate.getFullYear(),
+                            currentDate.getMonth(),
+                            0
+                        );
+
+
+                    days +=
+                        previousMonth.getDate();
+
+                }
+
+
+                if (months < 0) {
+
+                    years--;
+
+                    months += 12;
+
+                }
+
+
+                result.innerHTML = `
+
+                    <strong>
+                        ${years} years,
+                        ${months} months,
+                        ${days} days
+                    </strong>
+
+                    <br><br>
+
+                    🎉 That's your exact age!
+
+                `;
+
+            }
+        );
+
+    }
+
+
+    // =================================================
+    // DISCOUNT
+    // =================================================
+
+    else if (toolName === "discount") {
+
+        const originalPrice =
+            document.getElementById(
+                "originalPrice"
+            );
+
+        const discountPercent =
+            document.getElementById(
+                "discountPercent"
+            );
+
+        const calculateButton =
+            document.getElementById(
+                "calculateDiscount"
+            );
+
+        const result =
+            document.getElementById(
+                "discountResult"
+            );
+
+
+        calculateButton.addEventListener(
+            "click",
+            function () {
+
+                const price =
+                    parseFloat(
+                        originalPrice.value
+                    );
+
+                const discount =
+                    parseFloat(
+                        discountPercent.value
+                    );
+
+
+                if (
+                    Number.isNaN(price) ||
+                    price < 0
+                ) {
+
+                    result.textContent =
+                        "Please enter a valid original price.";
+
+                    return;
+
+                }
+
+
+                if (
+                    Number.isNaN(discount) ||
+                    discount < 0 ||
+                    discount > 100
+                ) {
+
+                    result.textContent =
+                        "Discount must be between 0% and 100%.";
+
+                    return;
+
+                }
+
+
+                const savings =
+                    price *
+                    (discount / 100);
+
+
+                const finalPrice =
+                    price -
+                    savings;
+
+
+                result.innerHTML = `
+
+                    <div>
+                        💰 You Save:
+                        <strong>
+                            ₹${savings.toFixed(2)}
+                        </strong>
+                    </div>
+
+                    <br>
+
+                    <div>
+                        🛒 Final Price:
+                        <strong>
+                            ₹${finalPrice.toFixed(2)}
+                        </strong>
+                    </div>
+
+                `;
+
+            }
+        );
+
+    }
+
+
+    // =================================================
+    // BMI
+    // =================================================
+
+    else if (toolName === "bmi") {
+
+        const heightInput =
+            document.getElementById(
+                "bmiHeight"
+            );
+
+        const weightInput =
+            document.getElementById(
+                "bmiWeight"
+            );
+
+        const calculateButton =
+            document.getElementById(
+                "calculateBMI"
+            );
+
+        const result =
+            document.getElementById(
+                "bmiResult"
+            );
+
+
+        calculateButton.addEventListener(
+            "click",
+            function () {
+
+                const heightCm =
+                    parseFloat(
+                        heightInput.value
+                    );
+
+                const weightKg =
+                    parseFloat(
+                        weightInput.value
+                    );
+
+
+                if (
+                    Number.isNaN(heightCm) ||
+                    heightCm <= 0
+                ) {
+
+                    result.textContent =
+                        "Please enter a valid height.";
+
+                    return;
+
+                }
+
+
+                if (
+                    Number.isNaN(weightKg) ||
+                    weightKg <= 0
+                ) {
+
+                    result.textContent =
+                        "Please enter a valid weight.";
+
+                    return;
+
+                }
+
+
+                const heightM =
+                    heightCm / 100;
+
+
+                const bmi =
+                    weightKg /
+                    (heightM * heightM);
+
+
+                let category;
+
+
+                if (bmi < 18.5) {
+
+                    category =
+                        "Underweight";
+
+                }
+
+                else if (bmi < 25) {
+
+                    category =
+                        "Normal weight";
+
+                }
+
+                else if (bmi < 30) {
+
+                    category =
+                        "Overweight";
+
+                }
+
+                else {
+
+                    category =
+                        "Obesity";
+
+                }
+
+
+                result.innerHTML = `
+
+                    <div>
+                        ⚖️ Your BMI:
+                        <strong>
+                            ${bmi.toFixed(1)}
+                        </strong>
+                    </div>
+
+                    <br>
+
+                    <div>
+                        Category:
+                        <strong>
+                            ${category}
+                        </strong>
+                    </div>
+
+                `;
 
             }
         );
@@ -817,9 +1486,16 @@ function setupTool(toolName) {
                             !Number.isNaN(value)
                         ) {
 
-                            total += value;
+                            if (
+                                value >= 0 &&
+                                value <= 10
+                            ) {
 
-                            count++;
+                                total += value;
+
+                                count++;
+
+                            }
 
                         }
 
@@ -868,9 +1544,6 @@ function setupTool(toolName) {
         let timerInterval =
             null;
 
-        let isRunning =
-            false;
-
 
         const display =
             document.getElementById(
@@ -915,14 +1588,16 @@ function setupTool(toolName) {
         }
 
 
-        // Change timer time
-
         minutesInput.addEventListener(
             "change",
             function () {
 
-                if (isRunning) {
+                if (
+                    timerInterval !== null
+                ) {
+
                     return;
+
                 }
 
 
@@ -941,33 +1616,29 @@ function setupTool(toolName) {
                 }
 
 
-                if (minutes < 1) {
-
-                    minutes = 1;
-
-                }
-
-
-                if (minutes > 120) {
-
-                    minutes = 120;
-
-                }
+                minutes =
+                    Math.max(
+                        1,
+                        Math.min(
+                            120,
+                            minutes
+                        )
+                    );
 
 
                 this.value =
                     minutes;
 
+
                 timeLeft =
                     minutes * 60;
+
 
                 updateDisplay();
 
             }
         );
 
-
-        // Start timer
 
         start.addEventListener(
             "click",
@@ -982,11 +1653,9 @@ function setupTool(toolName) {
                 }
 
 
-                isRunning =
-                    true;
-
                 minutesInput.disabled =
                     true;
+
 
                 start.textContent =
                     "Running...";
@@ -1018,9 +1687,6 @@ function setupTool(toolName) {
                                 timerInterval =
                                     null;
 
-                                isRunning =
-                                    false;
-
                                 minutesInput.disabled =
                                     false;
 
@@ -1042,8 +1708,6 @@ function setupTool(toolName) {
         );
 
 
-        // Pause timer
-
         pause.addEventListener(
             "click",
             function () {
@@ -1059,9 +1723,6 @@ function setupTool(toolName) {
                     timerInterval =
                         null;
 
-                    isRunning =
-                        false;
-
                     minutesInput.disabled =
                         false;
 
@@ -1074,8 +1735,6 @@ function setupTool(toolName) {
         );
 
 
-        // Reset timer
-
         reset.addEventListener(
             "click",
             function () {
@@ -1084,14 +1743,14 @@ function setupTool(toolName) {
                     timerInterval
                 );
 
+
                 timerInterval =
                     null;
 
-                isRunning =
-                    false;
 
                 minutesInput.disabled =
                     false;
+
 
                 start.textContent =
                     "Start";
@@ -1104,30 +1763,31 @@ function setupTool(toolName) {
 
 
                 if (
-                    Number.isNaN(minutes) ||
-                    minutes < 1
+                    Number.isNaN(minutes)
                 ) {
 
                     minutes = 25;
 
-                    minutesInput.value =
-                        25;
-
                 }
 
 
-                if (minutes > 120) {
+                minutes =
+                    Math.max(
+                        1,
+                        Math.min(
+                            120,
+                            minutes
+                        )
+                    );
 
-                    minutes = 120;
 
-                    minutesInput.value =
-                        120;
-
-                }
+                minutesInput.value =
+                    minutes;
 
 
                 timeLeft =
                     minutes * 60;
+
 
                 updateDisplay();
 
@@ -1150,7 +1810,6 @@ function setupTool(toolName) {
             document.getElementById(
                 "wordText"
             );
-
 
         const result =
             document.getElementById(
@@ -1188,8 +1847,7 @@ function setupTool(toolName) {
                                 function (sentence) {
 
                                     return (
-                                        sentence
-                                            .trim()
+                                        sentence.trim()
                                             .length > 0
                                     );
 
@@ -1208,7 +1866,7 @@ function setupTool(toolName) {
 
 
     // =================================================
-    // PASSWORD GENERATOR
+    // PASSWORD
     // =================================================
 
     else if (toolName === "password") {
@@ -1218,12 +1876,10 @@ function setupTool(toolName) {
                 "generatePassword"
             );
 
-
         const output =
             document.getElementById(
                 "passwordOutput"
             );
-
 
         const copy =
             document.getElementById(
@@ -1237,17 +1893,14 @@ function setupTool(toolName) {
 
                 let length =
                     parseInt(
-                        document
-                            .getElementById(
-                                "passwordLength"
-                            )
-                            .value
+                        document.getElementById(
+                            "passwordLength"
+                        ).value
                     );
 
 
                 if (
-                    Number.isNaN(length) ||
-                    length < 6
+                    Number.isNaN(length)
                 ) {
 
                     length = 16;
@@ -1255,11 +1908,14 @@ function setupTool(toolName) {
                 }
 
 
-                if (length > 50) {
-
-                    length = 50;
-
-                }
+                length =
+                    Math.max(
+                        6,
+                        Math.min(
+                            50,
+                            length
+                        )
+                    );
 
 
                 const characters =
@@ -1302,7 +1958,9 @@ function setupTool(toolName) {
             "click",
             async function () {
 
-                if (!output.value) {
+                if (
+                    !output.value
+                ) {
 
                     return;
 
@@ -1311,8 +1969,7 @@ function setupTool(toolName) {
 
                 try {
 
-                    await navigator
-                        .clipboard
+                    await navigator.clipboard
                         .writeText(
                             output.value
                         );
@@ -1332,7 +1989,9 @@ function setupTool(toolName) {
                         1500
                     );
 
-                } catch (error) {
+                }
+
+                catch (error) {
 
                     alert(
                         "Unable to copy password."
@@ -1357,12 +2016,10 @@ function setupTool(toolName) {
                 "generateQR"
             );
 
-
         const input =
             document.getElementById(
                 "qrText"
             );
-
 
         const result =
             document.getElementById(
@@ -1417,6 +2074,187 @@ function setupTool(toolName) {
 
     }
 
+
+    // =================================================
+    // AI PROMPT GENERATOR
+    // =================================================
+
+    else if (toolName === "prompt") {
+
+        const generateButton =
+            document.getElementById(
+                "generatePrompt"
+            );
+
+        const copyButton =
+            document.getElementById(
+                "copyPrompt"
+            );
+
+        const result =
+            document.getElementById(
+                "promptResult"
+            );
+
+
+        generateButton.addEventListener(
+            "click",
+            function () {
+
+                const type =
+                    document.getElementById(
+                        "promptType"
+                    ).value;
+
+                const topic =
+                    document.getElementById(
+                        "promptTopic"
+                    ).value.trim();
+
+                const goal =
+                    document.getElementById(
+                        "promptGoal"
+                    ).value.trim();
+
+                const level =
+                    document.getElementById(
+                        "promptLevel"
+                    ).value;
+
+
+                if (!topic) {
+
+                    result.textContent =
+                        "Please enter a topic.";
+
+                    return;
+
+                }
+
+
+                if (!goal) {
+
+                    result.textContent =
+                        "Please enter your goal.";
+
+                    return;
+
+                }
+
+
+                const typeNames = {
+
+                    study:
+                        "expert study tutor",
+
+                    coding:
+                        "senior software developer",
+
+                    writing:
+                        "professional writer and editor",
+
+                    research:
+                        "academic research assistant",
+
+                    resume:
+                        "professional resume and career advisor",
+
+                    presentation:
+                        "professional presentation designer"
+
+                };
+
+
+                const role =
+                    typeNames[type] ||
+                    "helpful expert";
+
+
+                const prompt = `Act as an ${role}.
+
+Topic:
+${topic}
+
+Goal:
+${goal}
+
+Level:
+${level}
+
+Instructions:
+1. Explain everything clearly and logically.
+2. Use simple language where possible.
+3. Break complex information into clear steps.
+4. Provide practical examples.
+5. Highlight important points.
+6. Avoid unnecessary information.
+7. If something is unclear, state the assumption before answering.
+8. Give the final answer in a well-structured format.
+
+Please help me achieve my goal effectively.`;
+
+
+                result.textContent =
+                    prompt;
+
+            }
+        );
+
+
+        copyButton.addEventListener(
+            "click",
+            async function () {
+
+                const text =
+                    result.textContent.trim();
+
+
+                if (
+                    !text ||
+                    text ===
+                    "Your AI prompt will appear here."
+                ) {
+
+                    return;
+
+                }
+
+
+                try {
+
+                    await navigator.clipboard
+                        .writeText(text);
+
+
+                    copyButton.textContent =
+                        "Copied!";
+
+
+                    setTimeout(
+                        function () {
+
+                            copyButton.textContent =
+                                "Copy Prompt";
+
+                        },
+                        1500
+                    );
+
+                }
+
+                catch (error) {
+
+                    alert(
+                        "Unable to copy prompt."
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
 }
 
 
@@ -1424,24 +2262,27 @@ function setupTool(toolName) {
 // CLOSE MODAL
 // =====================================================
 
-closeModal.addEventListener(
-    "click",
-    function () {
+function closeToolModal() {
 
-        toolModal.classList.add(
-            "hidden"
-        );
+    toolModal.classList.add(
+        "hidden"
+    );
 
-        modalContent.innerHTML =
-            "";
+    modalContent.innerHTML =
+        "";
 
-    }
-);
+}
 
 
-// =====================================================
-// CLOSE MODAL - OVERLAY
-// =====================================================
+if (closeModal) {
+
+    closeModal.addEventListener(
+        "click",
+        closeToolModal
+    );
+
+}
+
 
 const modalOverlay =
     document.querySelector(
@@ -1453,23 +2294,14 @@ if (modalOverlay) {
 
     modalOverlay.addEventListener(
         "click",
-        function () {
-
-            toolModal.classList.add(
-                "hidden"
-            );
-
-            modalContent.innerHTML =
-                "";
-
-        }
+        closeToolModal
     );
 
 }
 
 
 // =====================================================
-// ESC KEY CLOSE
+// ESC TO CLOSE
 // =====================================================
 
 document.addEventListener(
@@ -1478,17 +2310,13 @@ document.addEventListener(
 
         if (
             event.key === "Escape" &&
+            toolModal &&
             !toolModal.classList.contains(
                 "hidden"
             )
         ) {
 
-            toolModal.classList.add(
-                "hidden"
-            );
-
-            modalContent.innerHTML =
-                "";
+            closeToolModal();
 
         }
 
@@ -1500,38 +2328,42 @@ document.addEventListener(
 // DARK MODE
 // =====================================================
 
-themeToggle.addEventListener(
-    "click",
-    function () {
+if (themeToggle) {
 
-        document.body.classList.toggle(
-            "dark"
-        );
+    themeToggle.addEventListener(
+        "click",
+        function () {
 
-
-        const darkMode =
-            document.body.classList.contains(
+            document.body.classList.toggle(
                 "dark"
             );
 
 
-        themeToggle.textContent =
-            darkMode
-                ? "☀️"
-                : "🌙";
+            const darkMode =
+                document.body.classList.contains(
+                    "dark"
+                );
 
 
-        localStorage.setItem(
-            "studentHubDarkMode",
-            darkMode
-        );
+            themeToggle.textContent =
+                darkMode
+                    ? "☀️"
+                    : "🌙";
 
-    }
-);
+
+            localStorage.setItem(
+                "studentHubDarkMode",
+                darkMode
+            );
+
+        }
+    );
+
+}
 
 
 // =====================================================
-// LOAD SAVED DARK MODE
+// LOAD DARK MODE
 // =====================================================
 
 const savedTheme =
@@ -1540,29 +2372,36 @@ const savedTheme =
     );
 
 
-if (savedTheme === "true") {
+if (
+    savedTheme === "true"
+) {
 
     document.body.classList.add(
         "dark"
     );
 
-    themeToggle.textContent =
-        "☀️";
+
+    if (themeToggle) {
+
+        themeToggle.textContent =
+            "☀️";
+
+    }
 
 }
 
 
 // =====================================================
-// INITIAL TOOL COUNT
+// INITIAL FILTER
 // =====================================================
 
 filterTools();
 
 
 // =====================================================
-// CONSOLE MESSAGE
+// CONSOLE
 // =====================================================
 
 console.log(
-    "🚀 StudentHub JavaScript V2 loaded successfully!"
+    "🚀 StudentHub V3 loaded successfully!"
 );
