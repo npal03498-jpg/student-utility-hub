@@ -1,5 +1,4 @@
-# StudentHub crawler rules
-# Allow search engines to crawl the public website.
-
 User-agent: *
 Allow: /
+
+Sitemap: https://npal03498-jpg.github.io/student-utility-hub/sitemap.xml
