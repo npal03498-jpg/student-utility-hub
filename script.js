@@ -1,6 +1,6 @@
 // =====================================================
 // STUDENTHUB
-// COMPLETE JAVASCRIPT V3
+// CLEAN FINAL JAVASCRIPT
 // =====================================================
 
 
@@ -101,8 +101,7 @@ function filterTools() {
     });
 
 
-    toolCount.textContent =
-        visibleTools;
+    toolCount.textContent = visibleTools;
 
 
     if (visibleTools === 0) {
@@ -1097,8 +1096,11 @@ function setupTool(toolName) {
 
 
         const todayString =
-            today.toISOString()
-                .split("T")[0];
+            [
+                today.getFullYear(),
+                String(today.getMonth() + 1).padStart(2, "0"),
+                String(today.getDate()).padStart(2, "0")
+            ].join("-");
 
 
         dobInput.max =
@@ -1463,9 +1465,7 @@ function setupTool(toolName) {
             function () {
 
                 const inputs =
-                    document.querySelectorAll(
-                        ".gpa-input"
-                    );
+                    document.querySelectorAll(".gpa-input");
 
 
                 let total = 0;
@@ -2268,8 +2268,8 @@ function closeToolModal() {
         "hidden"
     );
 
-    modalContent.innerHTML =
-        "";
+    modalContent.innerHTML = "";
+    document.body.classList.remove("modal-open");
 
 }
 

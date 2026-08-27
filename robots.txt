@@ -1,0 +1,5 @@
+# StudentHub crawler rules
+# Allow search engines to crawl the public website.
+
+User-agent: *
+Allow: /
