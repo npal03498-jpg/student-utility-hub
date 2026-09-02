@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Percentage Calculator – Free Online Calculator | StudentHub</title>
+
+    <meta
+        name="description"
+        content="Use StudentHub's free percentage calculator to calculate percentages, percentage increase, percentage decrease and more. Fast, simple and free."
+    >
+
+    <meta name="robots" content="index, follow">
+
+    <link
+        rel="canonical"
+        href="https://npal03498-jpg.github.io/student-utility-hub/percentage-calculator/"
+    >
+
+    <meta property="og:type" content="website">
+    <meta
+        property="og:title"
+        content="Percentage Calculator – Free Online Calculator | StudentHub"
+    >
+    <meta
+        property="og:description"
+        content="Calculate percentages, increases and decreases quickly with this free online percentage calculator."
+    >
+    <meta
+        property="og:url"
+        content="https://npal03498-jpg.github.io/student-utility-hub/percentage-calculator/"
+    >
+
+    <meta name="theme-color" content="#6366f1">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: auto;
+        }
+
+        header {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 18px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 800;
+            color: #1e293b;
+        }
+
+        .logo span {
+            color: #6366f1;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #6366f1;
+            font-weight: 600;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 55px 0 35px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            margin-bottom: 15px;
+            color: #0f172a;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #64748b;
+            font-size: 18px;
+        }
+
+        .calculator-section {
+            padding: 20px 0 60px;
+        }
+
+        .calculator {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .calculator h2 {
+            margin-bottom: 22px;
+            font-size: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #6366f1;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #6366f1;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4f46e5;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 18px;
+            background: #eef2ff;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: #4338ca;
+            display: none;
+        }
+
+        .content {
+            max-width: 850px;
+            margin: auto;
+            padding-bottom: 60px;
+        }
+
+        .content section {
+            background: white;
+            padding: 28px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .content h2 {
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .content h3 {
+            margin-top: 18px;
+            margin-bottom: 8px;
+        }
+
+        .content p {
+            color: #475569;
+            margin-bottom: 12px;
+        }
+
+        .formula {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 700;
+            margin: 12px 0;
+        }
+
+        .faq {
+            margin-top: 15px;
+        }
+
+        .faq h3 {
+            color: #1e293b;
+        }
+
+        .tools-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tools-links a {
+            text-decoration: none;
+            background: #eef2ff;
+            color: #4338ca;
+            padding: 9px 14px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 15px;
+            background: #0f172a;
+            color: #cbd5e1;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+
+            .calculator {
+                padding: 22px;
+            }
+
+            .content section {
+                padding: 22px;
+            }
+
+            .hero {
+                padding-top: 40px;
+            }
+
+        }
+
+    </style>
+
+    <!-- Structured Data -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Percentage Calculator",
+        "description": "Free online percentage calculator for calculating percentages, increases and decreases.",
+        "url": "https://npal03498-jpg.github.io/student-utility-hub/percentage-calculator/"
+    }
+    </script>
+
+</head>
+
+
+<body>
+
+<header>
+
+    <div class="container navbar">
+
+        <a
+            href="../"
+            class="logo"
+        >
+            Student<span>Hub</span>
+        </a>
+
+        <a
+            href="../"
+            class="back-link"
+        >
+            ← All Tools
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="hero">
+
+        <div class="container">
+
+            <h1>
+                Percentage Calculator
+            </h1>
+
+            <p>
+                Calculate percentages quickly and easily.
+                Find percentage values, increases and decreases
+                with our free online percentage calculator.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="calculator-section">
+
+        <div class="container">
+
+            <div class="calculator">
+
+                <h2>
+                    Calculate Percentage
+                </h2>
+
+
+                <div class="input-group">
+
+                    <label for="number">
+                        What is
+                    </label>
+
+                    <input
+                        type="number"
+                        id="number"
+                        placeholder="Example: 20"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="total">
+                        Percent of
+                    </label>
+
+                    <input
+                        type="number"
+                        id="total"
+                        placeholder="Example: 200"
+                    >
+
+                </div>
+
+
+                <button onclick="calculatePercentage()">
+                    Calculate
+                </button>
+
+
+                <div
+                    id="result"
+                    class="result"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <article class="content">
+
+
+        <section>
+
+            <h2>
+                What is a Percentage?
+            </h2>
+
+            <p>
+                A percentage is a way of expressing a number
+                as a fraction of 100. The word percentage means
+                "per hundred".
+            </p>
+
+            <p>
+                Percentages are commonly used in school,
+                college, exams, discounts, marks, statistics
+                and everyday calculations.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>
+                How to Calculate a Percentage
+            </h2>
+
+            <p>
+                To calculate what percentage one number is
+                of another number, use this formula:
+            </p>
+
+            <div class="formula">
+                Percentage = (Part ÷ Total) × 100
+            </div>
+
+            <p>
+                For example, if you scored 45 marks out of 60:
+            </p>
+
+            <div class="formula">
+                (45 ÷ 60) × 100 = 75%
+            </div>
+
+            <p>
+                Therefore, your score is 75%.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>
+                Percentage Examples
+            </h2>
+
+            <h3>
+                Example 1: Find 20% of 200
+            </h3>
+
+            <div class="formula">
+                20 ÷ 100 × 200 = 40
+            </div>
+
+            <h3>
+                Example 2: Exam Percentage
+            </h3>
+
+            <p>
+                If a student scores 420 marks out of 500:
+            </p>
+
+            <div class="formula">
+                (420 ÷ 500) × 100 = 84%
+            </div>
+
+            <h3>
+                Example 3: Percentage Increase
+            </h3>
+
+            <p>
+                If a price increases from 100 to 120,
+                the increase is 20%.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>
+                Percentage Calculator for Students
+            </h2>
+
+            <p>
+                Students can use a percentage calculator
+                to calculate exam marks, test scores,
+                assignment results and overall percentages.
+            </p>
+
+            <p>
+                Instead of calculating percentages manually,
+                enter the numbers above and get the result
+                instantly.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+
+            <div class="faq">
+
+                <h3>
+                    How do I calculate percentage?
+                </h3>
+
+                <p>
+                    Divide the part by the total and multiply
+                    the result by 100.
+                </p>
+
+            </div>
+
+
+            <div class="faq">
+
+                <h3>
+                    What is the formula for percentage?
+                </h3>
+
+                <p>
+                    The basic formula is:
+                    (Part ÷ Total) × 100.
+                </p>
+
+            </div>
+
+
+            <div class="faq">
+
+                <h3>
+                    How can I calculate exam percentage?
+                </h3>
+
+                <p>
+                    Divide the marks obtained by the total
+                    marks and multiply by 100.
+                </p>
+
+            </div>
+
+
+            <div class="faq">
+
+                <h3>
+                    Is this percentage calculator free?
+                </h3>
+
+                <p>
+                    Yes. StudentHub's percentage calculator
+                    is free to use.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section>
+
+            <h2>
+                More Free Student Tools
+            </h2>
+
+            <p>
+                Explore other free tools available on StudentHub:
+            </p>
+
+            <div class="tools-links">
+
+                <a href="../">
+                    Student Tools
+                </a>
+
+                <a href="../#tools">
+                    All Calculators
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </article>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 StudentHub. All rights reserved.
+    </p>
+
+    <p>
+        <a href="../">
+            StudentHub
+        </a>
+        — Free tools for students.
+    </p>
+
+</footer>
+
+
+<script>
+
+function calculatePercentage() {
+
+    const number =
+        parseFloat(
+            document.getElementById("number").value
+        );
+
+    const total =
+        parseFloat(
+            document.getElementById("total").value
+        );
+
+    const result =
+        document.getElementById("result");
+
+
+    if (
+        isNaN(number) ||
+        isNaN(total) ||
+        total === 0
+    ) {
+
+        result.style.display = "block";
+
+        result.textContent =
+            "Please enter valid numbers.";
+
+        return;
+
+    }
+
+
+    const percentage =
+        (number / total) * 100;
+
+
+    result.style.display = "block";
+
+    result.textContent =
+        `${number} is ${percentage.toFixed(2)}% of ${total}.`;
+
+}
+
+</script>
+
+
+</body>
+
+</html>
