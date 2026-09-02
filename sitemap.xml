@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://npal03498-jpg.github.io/student-utility-hub/</loc>
   </url>
+
+  <url>
+    <loc>https://npal03498-jpg.github.io/student-utility-hub/percentage-calculator/</loc>
+  </url>
+
+  <url>
+    <loc>https://npal03498-jpg.github.io/student-utility-hub/cgpa-calculator/</loc>
+  </url>
+
+  <url>
+    <loc>https://npal03498-jpg.github.io/student-utility-hub/age-calculator/</loc>
+  </url>
+
+  <url>
+    <loc>https://npal03498-jpg.github.io/student-utility-hub/discount-calculator/</loc>
+  </url>
+
+  <url>
+    <loc>https://npal03498-jpg.github.io/student-utility-hub/bmi-calculator/</loc>
+  </url>
+
+  <url>
+    <loc>https://npal03498-jpg.github.io/student-utility-hub/word-counter/</loc>
+  </url>
+
+  <url>
+    <loc>https://npal03498-jpg.github.io/student-utility-hub/pomodoro-timer/</loc>
+  </url>
+
+  <url>
+    <loc>https://npal03498-jpg.github.io/student-utility-hub/qr-code-generator/</loc>
+  </url>
+
 </urlset>
