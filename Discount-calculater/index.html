@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Discount Calculator – Free Online Calculator | StudentHub</title>
+
+  <meta name="description"
+        content="Use StudentHub's free discount calculator to calculate discount amount, final price and savings quickly and easily.">
+
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical"
+        href="https://npal03498-jpg.github.io/student-utility-hub/discount-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:title"
+        content="Discount Calculator – Free Online Calculator | StudentHub">
+
+  <meta property="og:description"
+        content="Calculate discount amount, final price and total savings with this free online discount calculator.">
+
+  <meta property="og:url"
+        content="https://npal03498-jpg.github.io/student-utility-hub/discount-calculator/">
+
+  <meta property="og:type" content="website">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Discount Calculator",
+    "description": "Free online discount calculator for calculating discount amount, final price and savings.",
+    "url": "https://npal03498-jpg.github.io/student-utility-hub/discount-calculator/"
+  }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #6366f1;
+      color: white;
+      padding: 22px 20px;
+    }
+
+    header .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #6b7280;
+      font-size: 17px;
+    }
+
+    .calculator {
+      max-width: 550px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #6366f1;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .result {
+      margin-top: 25px;
+      padding: 20px;
+      background: #f3f4f6;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .result h2 {
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    .result p {
+      margin: 7px 0;
+    }
+
+    .content {
+      background: white;
+      margin-top: 35px;
+      padding: 30px;
+      border-radius: 16px;
+    }
+
+    .content h2 {
+      margin-bottom: 12px;
+      margin-top: 25px;
+    }
+
+    .content h2:first-child {
+      margin-top: 0;
+    }
+
+    .content p {
+      margin-bottom: 12px;
+      color: #4b5563;
+    }
+
+    .content ul {
+      margin-left: 20px;
+      color: #4b5563;
+    }
+
+    .links {
+      margin-top: 25px;
+    }
+
+    .links a {
+      color: #6366f1;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 25px;
+      text-align: center;
+      background: #111827;
+      color: white;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .calculator,
+      .content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <a href="../">← StudentHub</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <h1>Discount Calculator</h1>
+      <p>
+        Calculate discount amount, final price and your total savings instantly.
+      </p>
+    </section>
+
+    <!-- Calculator -->
+    <section class="calculator">
+
+      <div class="input-group">
+        <label for="price">Original Price</label>
+        <input
+          type="number"
+          id="price"
+          placeholder="Enter original price"
+          min="0"
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="discount">Discount Percentage (%)</label>
+        <input
+          type="number"
+          id="discount"
+          placeholder="Enter discount percentage"
+          min="0"
+          max="100"
+        >
+      </div>
+
+      <button onclick="calculateDiscount()">
+        Calculate Discount
+      </button>
+
+      <div class="result" id="result">
+        <h2>Result</h2>
+
+        <p>
+          <strong>Discount Amount:</strong>
+          <span id="discountAmount">₹0</span>
+        </p>
+
+        <p>
+          <strong>Final Price:</strong>
+          <span id="finalPrice">₹0</span>
+        </p>
+
+        <p>
+          <strong>You Save:</strong>
+          <span id="saving">₹0</span>
+        </p>
+      </div>
+
+    </section>
+
+    <!-- SEO Content -->
+    <section class="content">
+
+      <h2>What is a Discount Calculator?</h2>
+
+      <p>
+        A discount calculator is a simple online tool that helps you calculate
+        how much money you save when a discount is applied to an original price.
+        It also shows the final price you need to pay after the discount.
+      </p>
+
+      <h2>How to Calculate Discount?</h2>
+
+      <p>
+        The discount amount can be calculated using this formula:
+      </p>
+
+      <p>
+        <strong>Discount Amount = Original Price × Discount Percentage ÷ 100</strong>
+      </p>
+
+      <p>
+        The final price is:
+      </p>
+
+      <p>
+        <strong>Final Price = Original Price − Discount Amount</strong>
+      </p>
+
+      <h2>Example</h2>
+
+      <p>
+        Suppose a product costs ₹2,000 and has a 20% discount.
+      </p>
+
+      <ul>
+        <li>Original Price = ₹2,000</li>
+        <li>Discount = 20%</li>
+        <li>Discount Amount = ₹400</li>
+        <li>Final Price = ₹1,600</li>
+        <li>Total Savings = ₹400</li>
+      </ul>
+
+      <h2>Why Use a Discount Calculator?</h2>
+
+      <p>
+        A discount calculator makes it easier to compare prices during online
+        shopping, sales and special offers. Students can also use it to
+        calculate savings on books, courses, electronics, subscriptions and
+        other products.
+      </p>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>How do I calculate 20% off a price?</h3>
+
+      <p>
+        Multiply the original price by 20 and divide by 100. Subtract the
+        resulting discount amount from the original price to get the final
+        price.
+      </p>
+
+      <h3>What is the formula for discount?</h3>
+
+      <p>
+        Discount Amount = Original Price × Discount Percentage ÷ 100.
+      </p>
+
+      <h3>Does the calculator show how much I save?</h3>
+
+      <p>
+        Yes. The discount amount represents the total amount you save.
+      </p>
+
+      <div class="links">
+        <p>Explore more StudentHub tools:</p>
+
+        <p>
+          <a href="../percentage-calculator/">
+            Percentage Calculator
+          </a>
+          |
+          <a href="../cgpa-calculator/">
+            CGPA Calculator
+          </a>
+          |
+          <a href="../age-calculator/">
+            Age Calculator
+          </a>
+          |
+          <a href="../">
+            All Student Tools
+          </a>
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      © 2026 StudentHub. Free tools for students.
+    </p>
+  </footer>
+
+  <script>
+    function calculateDiscount() {
+
+      const price = parseFloat(
+        document.getElementById("price").value
+      );
+
+      const discount = parseFloat(
+        document.getElementById("discount").value
+      );
+
+      if (
+        isNaN(price) ||
+        isNaN(discount) ||
+        price < 0 ||
+        discount < 0 ||
+        discount > 100
+      ) {
+        alert("Please enter a valid price and discount percentage.");
+        return;
+      }
+
+      const discountAmount =
+        price * discount / 100;
+
+      const finalPrice =
+        price - discountAmount;
+
+      document.getElementById("discountAmount").textContent =
+        "₹" + discountAmount.toFixed(2);
+
+      document.getElementById("finalPrice").textContent =
+        "₹" + finalPrice.toFixed(2);
+
+      document.getElementById("saving").textContent =
+        "₹" + discountAmount.toFixed(2);
+
+      document.getElementById("result").style.display =
+        "block";
+    }
+  </script>
+
+</body>
+</html>
