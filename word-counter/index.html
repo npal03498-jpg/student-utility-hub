@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Word Counter – Free Online Word & Character Counter | StudentHub</title>
+
+  <meta name="description"
+        content="Use StudentHub's free word counter to count words, characters, sentences and paragraphs, and estimate reading time instantly.">
+
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical"
+        href="https://npal03498-jpg.github.io/student-utility-hub/word-counter/">
+
+  <!-- Open Graph -->
+  <meta property="og:title"
+        content="Word Counter – Free Online Word & Character Counter | StudentHub">
+
+  <meta property="og:description"
+        content="Count words, characters, sentences and paragraphs with StudentHub's free online word counter.">
+
+  <meta property="og:url"
+        content="https://npal03498-jpg.github.io/student-utility-hub/word-counter/">
+
+  <meta property="og:type" content="website">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Word Counter",
+    "description": "Free online word and character counter for students, writers and everyday use.",
+    "url": "https://npal03498-jpg.github.io/student-utility-hub/word-counter/"
+  }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #6366f1;
+      color: white;
+      padding: 22px 20px;
+    }
+
+    header .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #6b7280;
+      font-size: 17px;
+    }
+
+    .calculator {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 250px;
+      resize: vertical;
+      padding: 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      outline: none;
+    }
+
+    textarea:focus {
+      border-color: #6366f1;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .stat {
+      background: #f3f4f6;
+      padding: 18px 10px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .content {
+      background: white;
+      margin-top: 35px;
+      padding: 30px;
+      border-radius: 16px;
+    }
+
+    .content h2 {
+      margin-top: 25px;
+      margin-bottom: 12px;
+    }
+
+    .content h2:first-child {
+      margin-top: 0;
+    }
+
+    .content h3 {
+      margin-top: 18px;
+      margin-bottom: 7px;
+    }
+
+    .content p {
+      margin-bottom: 12px;
+      color: #4b5563;
+    }
+
+    .content ul {
+      margin-left: 20px;
+      color: #4b5563;
+    }
+
+    .links {
+      margin-top: 25px;
+    }
+
+    .links a {
+      color: #6366f1;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 25px;
+      text-align: center;
+      background: #111827;
+      color: white;
+    }
+
+    @media (max-width: 800px) {
+      .stats {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .calculator,
+      .content {
+        padding: 20px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <a href="../">← StudentHub</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <h1>Word Counter</h1>
+      <p>
+        Count words, characters, sentences, paragraphs and reading time instantly.
+      </p>
+    </section>
+
+    <!-- Word Counter -->
+    <section class="calculator">
+
+      <textarea
+        id="textInput"
+        placeholder="Type or paste your text here..."
+      ></textarea>
+
+      <div class="stats">
+
+        <div class="stat">
+          <span class="stat-number" id="wordCount">0</span>
+          <span class="stat-label">Words</span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-number" id="charCount">0</span>
+          <span class="stat-label">Characters</span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-number" id="charNoSpaceCount">0</span>
+          <span class="stat-label">No Spaces</span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-number" id="sentenceCount">0</span>
+          <span class="stat-label">Sentences</span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-number" id="paragraphCount">0</span>
+          <span class="stat-label">Paragraphs</span>
+        </div>
+
+      </div>
+
+      <div class="stat" style="margin-top: 12px;">
+        <span class="stat-number" id="readingTime">0 min</span>
+        <span class="stat-label">Estimated Reading Time</span>
+      </div>
+
+    </section>
+
+    <!-- SEO Content -->
+    <section class="content">
+
+      <h2>What is a Word Counter?</h2>
+
+      <p>
+        A word counter is an online tool that counts the number of words in
+        a piece of text. It can also provide useful statistics such as
+        character count, sentence count, paragraph count and estimated
+        reading time.
+      </p>
+
+      <h2>How Does a Word Counter Work?</h2>
+
+      <p>
+        The tool analyzes the text you enter and calculates different
+        statistics automatically. Words are counted based on groups of
+        characters separated by whitespace.
+      </p>
+
+      <h2>Why Use a Word Counter?</h2>
+
+      <p>
+        A word counter can be useful for students, writers and anyone who
+        needs to meet a specific word limit.
+      </p>
+
+      <ul>
+        <li>Check assignment and essay word limits.</li>
+        <li>Count words in articles and blog posts.</li>
+        <li>Check character limits for applications.</li>
+        <li>Estimate how long a text may take to read.</li>
+        <li>Quickly check the length of written content.</li>
+      </ul>
+
+      <h2>Word Counter for Students</h2>
+
+      <p>
+        Students often need to write assignments, essays, reports and
+        applications with specific word requirements. A word counter makes
+        it easy to check whether your writing is within the required limit.
+      </p>
+
+      <h2>Word Count vs Character Count</h2>
+
+      <p>
+        Word count measures the number of words in a text, while character
+        count measures individual characters. Character count can include
+        spaces, punctuation and other characters.
+      </p>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>How do I count words in a text?</h3>
+
+      <p>
+        Paste or type your text into the text box above. The word count is
+        calculated automatically.
+      </p>
+
+      <h3>Does the word counter count characters?</h3>
+
+      <p>
+        Yes. StudentHub's word counter shows both total characters and
+        characters excluding spaces.
+      </p>
+
+      <h3>Can I use this word counter for assignments?</h3>
+
+      <p>
+        Yes. It can be used to quickly check the length of essays,
+        assignments, reports and other written work.
+      </p>
+
+      <h3>What is estimated reading time?</h3>
+
+      <p>
+        Estimated reading time is an approximate indication of how long it
+        may take to read the text at an average reading speed.
+      </p>
+
+      <div class="links">
+
+        <p>Explore more StudentHub tools:</p>
+
+        <p>
+          <a href="../percentage-calculator/">
+            Percentage Calculator
+          </a>
+          |
+          <a href="../cgpa-calculator/">
+            CGPA Calculator
+          </a>
+          |
+          <a href="../age-calculator/">
+            Age Calculator
+          </a>
+          |
+          <a href="../discount-calculator/">
+            Discount Calculator
+          </a>
+          |
+          <a href="../bmi-calculator/">
+            BMI Calculator
+          </a>
+          |
+          <a href="../">
+            All Student Tools
+          </a>
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      © 2026 StudentHub. Free tools for students.
+    </p>
+  </footer>
+
+  <script>
+
+    const textInput = document.getElementById("textInput");
+
+    textInput.addEventListener("input", updateCounts);
+
+    function updateCounts() {
+
+      const text = textInput.value;
+
+      // Word count
+      const trimmedText = text.trim();
+
+      const words = trimmedText
+        ? trimmedText.split(/\s+/)
+        : [];
+
+      const wordCount = words.length;
+
+      // Character count
+      const charCount = text.length;
+
+      // Characters without spaces
+      const charNoSpaceCount =
+        text.replace(/\s/g, "").length;
+
+      // Sentence count
+      const sentenceMatches =
+        text.match(/[.!?]+(?=\s|$)/g);
+
+      const sentenceCount =
+        sentenceMatches ? sentenceMatches.length : 0;
+
+      // Paragraph count
+      const paragraphMatches =
+        text
+          .split(/\n\s*\n/)
+          .filter(paragraph => paragraph.trim().length > 0);
+
+      const paragraphCount =
+        paragraphMatches.length;
+
+      // Reading time
+      const readingMinutes =
+        wordCount === 0
+          ? 0
+          : Math.max(1, Math.ceil(wordCount / 200));
+
+      document.getElementById("wordCount").textContent =
+        wordCount;
+
+      document.getElementById("charCount").textContent =
+        charCount;
+
+      document.getElementById("charNoSpaceCount").textContent =
+        charNoSpaceCount;
+
+      document.getElementById("sentenceCount").textContent =
+        sentenceCount;
+
+      document.getElementById("paragraphCount").textContent =
+        paragraphCount;
+
+      document.getElementById("readingTime").textContent =
+        readingMinutes + " min";
+    }
+
+  </script>
+
+</body>
+</html>
