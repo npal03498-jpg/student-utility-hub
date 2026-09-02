@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CGPA Calculator – Free Online CGPA Calculator | StudentHub</title>
+
+    <meta
+        name="description"
+        content="Calculate your CGPA easily with StudentHub's free online CGPA calculator. Enter your semester grades or grade points and get your CGPA instantly."
+    >
+
+    <meta name="robots" content="index, follow">
+
+    <link
+        rel="canonical"
+        href="https://npal03498-jpg.github.io/student-utility-hub/cgpa-calculator/"
+    >
+
+    <meta property="og:type" content="website">
+
+    <meta
+        property="og:title"
+        content="CGPA Calculator – Free Online CGPA Calculator | StudentHub"
+    >
+
+    <meta
+        property="og:description"
+        content="Calculate your CGPA quickly with this free online CGPA calculator for students."
+    >
+
+    <meta
+        property="og:url"
+        content="https://npal03498-jpg.github.io/student-utility-hub/cgpa-calculator/"
+    >
+
+    <meta name="theme-color" content="#6366f1">
+
+
+    <!-- Structured Data -->
+
+    <script type="application/ld+json">
+
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "CGPA Calculator",
+        "description": "Free online CGPA calculator for students.",
+        "url": "https://npal03498-jpg.github.io/student-utility-hub/cgpa-calculator/"
+    }
+
+    </script>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            line-height: 1.6;
+
+            background: #f8fafc;
+
+            color: #1e293b;
+
+        }
+
+
+        .container {
+
+            width: min(1100px, 92%);
+
+            margin: auto;
+
+        }
+
+
+        header {
+
+            background: white;
+
+            border-bottom: 1px solid #e2e8f0;
+
+            padding: 18px 0;
+
+        }
+
+
+        .navbar {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .logo {
+
+            text-decoration: none;
+
+            font-size: 24px;
+
+            font-weight: 800;
+
+            color: #1e293b;
+
+        }
+
+
+        .logo span {
+
+            color: #6366f1;
+
+        }
+
+
+        .back-link {
+
+            text-decoration: none;
+
+            color: #6366f1;
+
+            font-weight: 600;
+
+        }
+
+
+        .hero {
+
+            text-align: center;
+
+            padding: 55px 0 35px;
+
+        }
+
+
+        .hero h1 {
+
+            font-size: clamp(32px, 5vw, 52px);
+
+            margin-bottom: 15px;
+
+            color: #0f172a;
+
+        }
+
+
+        .hero p {
+
+            max-width: 720px;
+
+            margin: auto;
+
+            color: #64748b;
+
+            font-size: 18px;
+
+        }
+
+
+        .calculator-section {
+
+            padding: 20px 0 60px;
+
+        }
+
+
+        .calculator {
+
+            max-width: 700px;
+
+            margin: auto;
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
+
+            border: 1px solid #e2e8f0;
+
+        }
+
+
+        .calculator h2 {
+
+            margin-bottom: 10px;
+
+            font-size: 25px;
+
+        }
+
+
+        .calculator-description {
+
+            color: #64748b;
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .semester {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .input-group label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-weight: 600;
+
+        }
+
+
+        input {
+
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border: 1px solid #cbd5e1;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+
+            outline: none;
+
+        }
+
+
+        input:focus {
+
+            border-color: #6366f1;
+
+        }
+
+
+        .buttons {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 20px;
+
+        }
+
+
+        button {
+
+            flex: 1;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #6366f1;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+        }
+
+
+        button:hover {
+
+            background: #4f46e5;
+
+        }
+
+
+        .secondary-button {
+
+            background: #e2e8f0;
+
+            color: #334155;
+
+        }
+
+
+        .secondary-button:hover {
+
+            background: #cbd5e1;
+
+        }
+
+
+        .result {
+
+            margin-top: 20px;
+
+            padding: 18px;
+
+            background: #eef2ff;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            font-size: 21px;
+
+            font-weight: 700;
+
+            color: #4338ca;
+
+            display: none;
+
+        }
+
+
+        .content {
+
+            max-width: 850px;
+
+            margin: auto;
+
+            padding-bottom: 60px;
+
+        }
+
+
+        .content section {
+
+            background: white;
+
+            padding: 28px;
+
+            margin-bottom: 20px;
+
+            border-radius: 15px;
+
+            border: 1px solid #e2e8f0;
+
+        }
+
+
+        .content h2 {
+
+            margin-bottom: 12px;
+
+            color: #0f172a;
+
+        }
+
+
+        .content h3 {
+
+            margin-top: 18px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .content p {
+
+            color: #475569;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .formula {
+
+            background: #f1f5f9;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            font-weight: 700;
+
+            margin: 12px 0;
+
+        }
+
+
+        .faq {
+
+            margin-top: 15px;
+
+        }
+
+
+        .faq h3 {
+
+            color: #1e293b;
+
+        }
+
+
+        .tools-links {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 15px;
+
+        }
+
+
+        .tools-links a {
+
+            text-decoration: none;
+
+            background: #eef2ff;
+
+            color: #4338ca;
+
+            padding: 9px 14px;
+
+            border-radius: 8px;
+
+            font-weight: 600;
+
+        }
+
+
+        footer {
+
+            text-align: center;
+
+            padding: 30px 15px;
+
+            background: #0f172a;
+
+            color: #cbd5e1;
+
+        }
+
+
+        footer a {
+
+            color: white;
+
+            text-decoration: none;
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .calculator {
+
+                padding: 22px;
+
+            }
+
+
+            .semester {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .buttons {
+
+                flex-direction: column;
+
+            }
+
+
+            .content section {
+
+                padding: 22px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="container navbar">
+
+        <a
+            href="../"
+            class="logo"
+        >
+            Student<span>Hub</span>
+        </a>
+
+
+        <a
+            href="../"
+            class="back-link"
+        >
+            ← All Tools
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="container">
+
+            <h1>
+                CGPA Calculator
+            </h1>
+
+            <p>
+                Calculate your CGPA quickly and easily.
+                Enter your semester grade points below and
+                get your average CGPA instantly.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CALCULATOR -->
+
+    <section class="calculator-section">
+
+        <div class="container">
+
+            <div class="calculator">
+
+                <h2>
+                    Calculate Your CGPA
+                </h2>
+
+                <p class="calculator-description">
+                    Enter the CGPA or grade point for each semester.
+                    You can add or remove semesters as needed.
+                </p>
+
+
+                <div id="semesterContainer">
+
+
+                    <div class="semester">
+
+                        <div class="input-group">
+
+                            <label>
+                                Semester 1
+                            </label>
+
+                            <input
+                                type="number"
+                                class="grade-point"
+                                placeholder="Example: 8.5"
+                                min="0"
+                                max="10"
+                                step="0.01"
+                            >
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>
+                                Semester 2
+                            </label>
+
+                            <input
+                                type="number"
+                                class="grade-point"
+                                placeholder="Example: 8.0"
+                                min="0"
+                                max="10"
+                                step="0.01"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="semester">
+
+                        <div class="input-group">
+
+                            <label>
+                                Semester 3
+                            </label>
+
+                            <input
+                                type="number"
+                                class="grade-point"
+                                placeholder="Example: 8.7"
+                                min="0"
+                                max="10"
+                                step="0.01"
+                            >
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>
+                                Semester 4
+                            </label>
+
+                            <input
+                                type="number"
+                                class="grade-point"
+                                placeholder="Example: 9.0"
+                                min="0"
+                                max="10"
+                                step="0.01"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="buttons">
+
+                    <button onclick="addSemester()">
+                        + Add Semester
+                    </button>
+
+                    <button
+                        class="secondary-button"
+                        onclick="calculateCGPA()"
+                    >
+                        Calculate CGPA
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="result"
+                    class="result"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEO CONTENT -->
+
+    <article class="content">
+
+
+        <section>
+
+            <h2>
+                What is CGPA?
+            </h2>
+
+            <p>
+                CGPA stands for Cumulative Grade Point Average.
+                It is commonly used by schools, colleges and
+                universities to represent a student's academic
+                performance over multiple subjects or semesters.
+            </p>
+
+            <p>
+                CGPA is usually represented on a scale such as
+                10 points, although the grading scale can vary
+                depending on the educational institution.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>
+                How to Calculate CGPA
+            </h2>
+
+            <p>
+                If all semesters have equal weight, CGPA can be
+                calculated by adding the semester grade points
+                and dividing the total by the number of semesters.
+            </p>
+
+
+            <div class="formula">
+                CGPA = Sum of Grade Points ÷ Number of Semesters
+            </div>
+
+
+            <h3>
+                Example
+            </h3>
+
+            <p>
+                Suppose your semester grade points are:
+            </p>
+
+            <div class="formula">
+                8.0, 8.5, 9.0 and 8.5
+            </div>
+
+            <p>
+                The CGPA would be:
+            </p>
+
+            <div class="formula">
+                (8.0 + 8.5 + 9.0 + 8.5) ÷ 4 = 8.50
+            </div>
+
+        </section>
+
+
+        <section>
+
+            <h2>
+                CGPA Calculator for Students
+            </h2>
+
+            <p>
+                Students can use this CGPA calculator to quickly
+                calculate their average grade point across multiple
+                semesters.
+            </p>
+
+            <p>
+                Enter your semester grade points, click Calculate
+                CGPA, and the calculator will show your result.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>
+                CGPA to Percentage
+            </h2>
+
+            <p>
+                The method for converting CGPA to percentage depends
+                on the grading system and rules used by your school,
+                college or university.
+            </p>
+
+            <p>
+                Different institutions can use different conversion
+                formulas, so students should check their official
+                academic guidelines before using a CGPA-to-percentage
+                conversion.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+
+            <div class="faq">
+
+                <h3>
+                    What does CGPA stand for?
+                </h3>
+
+                <p>
+                    CGPA stands for Cumulative Grade Point Average.
+                </p>
+
+            </div>
+
+
+            <div class="faq">
+
+                <h3>
+                    How is CGPA calculated?
+                </h3>
+
+                <p>
+                    When semester grade points have equal weight,
+                    add the grade points and divide by the number
+                    of semesters.
+                </p>
+
+            </div>
+
+
+            <div class="faq">
+
+                <h3>
+                    What is a good CGPA?
+                </h3>
+
+                <p>
+                    What counts as a good CGPA depends on the
+                    grading scale, institution and academic program.
+                </p>
+
+            </div>
+
+
+            <div class="faq">
+
+                <h3>
+                    Is this CGPA calculator free?
+                </h3>
+
+                <p>
+                    Yes. StudentHub's CGPA calculator is free to use.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section>
+
+            <h2>
+                More Student Tools
+            </h2>
+
+            <p>
+                Explore more free tools on StudentHub.
+            </p>
+
+
+            <div class="tools-links">
+
+                <a href="../">
+                    All Student Tools
+                </a>
+
+                <a href="../percentage-calculator/">
+                    Percentage Calculator
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </article>
+
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 StudentHub. All rights reserved.
+    </p>
+
+    <p>
+
+        <a href="../">
+            StudentHub
+        </a>
+
+        — Free tools for students.
+
+    </p>
+
+</footer>
+
+
+<script>
+
+function addSemester() {
+
+    const container =
+        document.getElementById("semesterContainer");
+
+    const semesterCount =
+        container.querySelectorAll(".grade-point").length + 1;
+
+
+    const semester =
+        document.createElement("div");
+
+    semester.className = "semester";
+
+
+    semester.innerHTML = `
+
+        <div class="input-group">
+
+            <label>
+                Semester ${semesterCount}
+            </label>
+
+            <input
+                type="number"
+                class="grade-point"
+                placeholder="Example: 8.5"
+                min="0"
+                max="10"
+                step="0.01"
+            >
+
+        </div>
+
+    `;
+
+
+    container.appendChild(semester);
+
+}
+
+
+function calculateCGPA() {
+
+    const inputs =
+        document.querySelectorAll(".grade-point");
+
+
+    const values = [];
+
+
+    inputs.forEach(function(input) {
+
+        const value =
+            parseFloat(input.value);
+
+
+        if (!isNaN(value)) {
+
+            values.push(value);
+
+        }
+
+    });
+
+
+    const result =
+        document.getElementById("result");
+
+
+    if (values.length === 0) {
+
+        result.style.display = "block";
+
+        result.textContent =
+            "Please enter at least one valid grade point.";
+
+        return;
+
+    }
+
+
+    for (let value of values) {
+
+        if (value < 0 || value > 10) {
+
+            result.style.display = "block";
+
+            result.textContent =
+                "Grade points should be between 0 and 10.";
+
+            return;
+
+        }
+
+    }
+
+
+    const total =
+        values.reduce(
+            (sum, value) => sum + value,
+            0
+        );
+
+
+    const cgpa =
+        total / values.length;
+
+
+    result.style.display = "block";
+
+
+    result.textContent =
+        `Your CGPA is ${cgpa.toFixed(2)}`;
+
+}
+
+</script>
+
+
+</body>
+
+</html>
