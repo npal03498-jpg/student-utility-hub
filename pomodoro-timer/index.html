@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pomodoro Timer – Free Online Study Timer | StudentHub</title>
+
+  <meta name="description"
+        content="Use StudentHub's free Pomodoro Timer to improve focus and study productivity. Set custom work and break durations and start your study session instantly.">
+
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical"
+        href="https://npal03498-jpg.github.io/student-utility-hub/pomodoro-timer/">
+
+  <!-- Open Graph -->
+  <meta property="og:title"
+        content="Pomodoro Timer – Free Online Study Timer | StudentHub">
+
+  <meta property="og:description"
+        content="Free online Pomodoro Timer for students. Set custom work and break durations and focus on your studies.">
+
+  <meta property="og:url"
+        content="https://npal03498-jpg.github.io/student-utility-hub/pomodoro-timer/">
+
+  <meta property="og:type" content="website">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Pomodoro Timer",
+    "description": "Free online Pomodoro Timer for studying, focus and productivity.",
+    "url": "https://npal03498-jpg.github.io/student-utility-hub/pomodoro-timer/"
+  }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #6366f1;
+      color: white;
+      padding: 22px 20px;
+    }
+
+    header .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #6b7280;
+      font-size: 17px;
+    }
+
+    .timer-box {
+      max-width: 550px;
+      margin: auto;
+      background: white;
+      padding: 35px 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .mode {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .timer {
+      font-size: 72px;
+      font-weight: bold;
+      margin: 15px 0 25px;
+      letter-spacing: 2px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      border-radius: 8px;
+      padding: 12px 22px;
+      background: #6366f1;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .secondary {
+      background: #374151;
+    }
+
+    .settings {
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .settings h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      text-align: left;
+    }
+
+    .input-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .apply {
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    .content {
+      background: white;
+      margin-top: 35px;
+      padding: 30px;
+      border-radius: 16px;
+    }
+
+    .content h2 {
+      margin-top: 25px;
+      margin-bottom: 12px;
+    }
+
+    .content h2:first-child {
+      margin-top: 0;
+    }
+
+    .content h3 {
+      margin-top: 18px;
+      margin-bottom: 7px;
+    }
+
+    .content p {
+      margin-bottom: 12px;
+      color: #4b5563;
+    }
+
+    .content ol,
+    .content ul {
+      margin-left: 22px;
+      color: #4b5563;
+      margin-bottom: 15px;
+    }
+
+    .links {
+      margin-top: 25px;
+    }
+
+    .links a {
+      color: #6366f1;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 25px;
+      text-align: center;
+      background: #111827;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .timer-box,
+      .content {
+        padding: 20px;
+      }
+
+      .timer {
+        font-size: 56px;
+      }
+
+      .inputs {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <a href="../">← StudentHub</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <h1>Pomodoro Timer</h1>
+
+      <p>
+        A simple study timer to help you focus, take breaks and stay productive.
+      </p>
+    </section>
+
+    <!-- TIMER -->
+    <section class="timer-box">
+
+      <div class="mode" id="mode">
+        Focus Time
+      </div>
+
+      <div class="timer" id="timer">
+        25:00
+      </div>
+
+      <div class="buttons">
+
+        <button onclick="startTimer()">
+          Start
+        </button>
+
+        <button onclick="pauseTimer()" class="secondary">
+          Pause
+        </button>
+
+        <button onclick="resetTimer()" class="secondary">
+          Reset
+        </button>
+
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="settings">
+
+        <h2>Custom Timer</h2>
+
+        <div class="inputs">
+
+          <div class="input-group">
+
+            <label for="workMinutes">
+              Focus Minutes
+            </label>
+
+            <input
+              type="number"
+              id="workMinutes"
+              value="25"
+              min="1"
+              max="180"
+            >
+
+          </div>
+
+          <div class="input-group">
+
+            <label for="breakMinutes">
+              Break Minutes
+            </label>
+
+            <input
+              type="number"
+              id="breakMinutes"
+              value="5"
+              min="1"
+              max="60"
+            >
+
+          </div>
+
+        </div>
+
+        <button
+          class="apply"
+          onclick="applySettings()"
+        >
+          Apply Settings
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- SEO CONTENT -->
+    <section class="content">
+
+      <h2>What is the Pomodoro Technique?</h2>
+
+      <p>
+        The Pomodoro Technique is a time-management method that divides work
+        into focused study or work sessions followed by short breaks.
+        It is designed to make long tasks easier to manage by breaking them
+        into smaller periods of focused work.
+      </p>
+
+      <h2>How to Use a Pomodoro Timer</h2>
+
+      <ol>
+        <li>Choose a task you want to work on.</li>
+        <li>Set your focus and break durations.</li>
+        <li>Start the timer and focus on your task.</li>
+        <li>Take a break when the focus session ends.</li>
+        <li>Repeat the process for your next study session.</li>
+      </ol>
+
+      <h2>What is the Standard Pomodoro Time?</h2>
+
+      <p>
+        A commonly used Pomodoro schedule consists of 25 minutes of focused
+        work followed by a 5-minute break. After several sessions, a longer
+        break can be taken.
+      </p>
+
+      <p>
+        However, the ideal duration can vary from person to person. This
+        StudentHub timer allows you to choose custom focus and break durations.
+      </p>
+
+      <h2>Benefits for Students</h2>
+
+      <ul>
+        <li>Helps divide large study tasks into manageable sessions.</li>
+        <li>Encourages focused study periods.</li>
+        <li>Provides regular opportunities to take breaks.</li>
+        <li>Can help students organize their study time.</li>
+        <li>Useful for revision, assignments and reading.</li>
+      </ul>
+
+      <h2>Pomodoro Timer for Studying</h2>
+
+      <p>
+        Students can use a Pomodoro timer while preparing for exams,
+        completing assignments, reading textbooks or practicing questions.
+        Instead of studying for an undefined amount of time, you can work
+        in clearly defined focus sessions.
+      </p>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>What is a Pomodoro Timer?</h3>
+
+      <p>
+        A Pomodoro Timer is a timer based on the Pomodoro Technique, where
+        focused work periods are separated by breaks.
+      </p>
+
+      <h3>How long should a Pomodoro session be?</h3>
+
+      <p>
+        The traditional Pomodoro approach commonly uses 25 minutes of work
+        followed by a 5-minute break. You can also choose a different duration
+        depending on your needs.
+      </p>
+
+      <h3>Can I customize the Pomodoro Timer?</h3>
+
+      <p>
+        Yes. This timer lets you set your own focus and break durations.
+      </p>
+
+      <h3>Is the Pomodoro Technique useful for students?</h3>
+
+      <p>
+        It can be useful for organizing study sessions and creating regular
+        breaks while working on academic tasks.
+      </p>
+
+      <div class="links">
+
+        <p>Explore more StudentHub tools:</p>
+
+        <p>
+          <a href="../percentage-calculator/">
+            Percentage Calculator
+          </a>
+          |
+          <a href="../cgpa-calculator/">
+            CGPA Calculator
+          </a>
+          |
+          <a href="../age-calculator/">
+            Age Calculator
+          </a>
+          |
+          <a href="../discount-calculator/">
+            Discount Calculator
+          </a>
+          |
+          <a href="../bmi-calculator/">
+            BMI Calculator
+          </a>
+          |
+          <a href="../word-counter/">
+            Word Counter
+          </a>
+          |
+          <a href="../">
+            All Student Tools
+          </a>
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      © 2026 StudentHub. Free tools for students.
+    </p>
+  </footer>
+
+
+  <script>
+
+    let timerInterval = null;
+
+    let workDuration = 25 * 60;
+    let breakDuration = 5 * 60;
+
+    let timeLeft = workDuration;
+
+    let isRunning = false;
+    let isWorkMode = true;
+
+
+    function updateDisplay() {
+
+      const minutes =
+        Math.floor(timeLeft / 60);
+
+      const seconds =
+        timeLeft % 60;
+
+      document.getElementById("timer").textContent =
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0");
+
+      document.getElementById("mode").textContent =
+        isWorkMode ? "Focus Time" : "Break Time";
+    }
+
+
+    function startTimer() {
+
+      if (isRunning) {
+        return;
+      }
+
+      isRunning = true;
+
+      timerInterval = setInterval(() => {
+
+        if (timeLeft > 0) {
+
+          timeLeft--;
+
+          updateDisplay();
+
+        } else {
+
+          switchMode();
+
+        }
+
+      }, 1000);
+    }
+
+
+    function pauseTimer() {
+
+      clearInterval(timerInterval);
+
+      timerInterval = null;
+
+      isRunning = false;
+    }
+
+
+    function resetTimer() {
+
+      clearInterval(timerInterval);
+
+      timerInterval = null;
+
+      isRunning = false;
+
+      isWorkMode = true;
+
+      timeLeft = workDuration;
+
+      updateDisplay();
+    }
+
+
+    function switchMode() {
+
+      isWorkMode = !isWorkMode;
+
+      timeLeft =
+        isWorkMode
+          ? workDuration
+          : breakDuration;
+
+      updateDisplay();
+
+    }
+
+
+    function applySettings() {
+
+      const workMinutes =
+        parseInt(
+          document.getElementById("workMinutes").value
+        );
+
+      const breakMinutes =
+        parseInt(
+          document.getElementById("breakMinutes").value
+        );
+
+      if (
+        isNaN(workMinutes) ||
+        isNaN(breakMinutes) ||
+        workMinutes < 1 ||
+        breakMinutes < 1
+      ) {
+
+        alert("Please enter valid timer durations.");
+
+        return;
+      }
+
+      workDuration =
+        workMinutes * 60;
+
+      breakDuration =
+        breakMinutes * 60;
+
+      resetTimer();
+
+    }
+
+
+    updateDisplay();
+
+  </script>
+
+</body>
+</html>
