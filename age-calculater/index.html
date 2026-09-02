@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Age Calculator – Calculate Your Exact Age | StudentHub</title>
+
+    <meta
+        name="description"
+        content="Use StudentHub's free age calculator to calculate your exact age in years, months and days from your date of birth."
+    >
+
+    <meta name="robots" content="index, follow">
+
+    <link
+        rel="canonical"
+        href="https://npal03498-jpg.github.io/student-utility-hub/age-calculator/"
+    >
+
+    <meta property="og:type" content="website">
+
+    <meta
+        property="og:title"
+        content="Age Calculator – Calculate Your Exact Age | StudentHub"
+    >
+
+    <meta
+        property="og:description"
+        content="Calculate your exact age in years, months and days with this free online age calculator."
+    >
+
+    <meta
+        property="og:url"
+        content="https://npal03498-jpg.github.io/student-utility-hub/age-calculator/"
+    >
+
+    <meta name="theme-color" content="#6366f1">
+
+
+    <!-- Structured Data -->
+
+    <script type="application/ld+json">
+
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Age Calculator",
+        "description": "Free online age calculator to calculate exact age in years, months and days.",
+        "url": "https://npal03498-jpg.github.io/student-utility-hub/age-calculator/"
+    }
+
+    </script>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            line-height: 1.6;
+
+            background: #f8fafc;
+
+            color: #1e293b;
+
+        }
+
+
+        .container {
+
+            width: min(1100px, 92%);
+
+            margin: auto;
+
+        }
+
+
+        header {
+
+            background: white;
+
+            border-bottom: 1px solid #e2e8f0;
+
+            padding: 18px 0;
+
+        }
+
+
+        .navbar {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .logo {
+
+            text-decoration: none;
+
+            font-size: 24px;
+
+            font-weight: 800;
+
+            color: #1e293b;
+
+        }
+
+
+        .logo span {
+
+            color: #6366f1;
+
+        }
+
+
+        .back-link {
+
+            text-decoration: none;
+
+            color: #6366f1;
+
+            font-weight: 600;
+
+        }
+
+
+        .hero {
+
+            text-align: center;
+
+            padding: 55px 0 35px;
+
+        }
+
+
+        .hero h1 {
+
+            font-size: clamp(32px, 5vw, 52px);
+
+            margin-bottom: 15px;
+
+            color: #0f172a;
+
+        }
+
+
+        .hero p {
+
+            max-width: 720px;
+
+            margin: auto;
+
+            color: #64748b;
+
+            font-size: 18px;
+
+        }
+
+
+        .calculator-section {
+
+            padding: 20px 0 60px;
+
+        }
+
+
+        .calculator {
+
+            max-width: 650px;
+
+            margin: auto;
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
+
+            border: 1px solid #e2e8f0;
+
+        }
+
+
+        .calculator h2 {
+
+            margin-bottom: 10px;
+
+            font-size: 25px;
+
+        }
+
+
+        .calculator-description {
+
+            color: #64748b;
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .input-group {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-weight: 600;
+
+        }
+
+
+        input {
+
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border: 1px solid #cbd5e1;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+
+            outline: none;
+
+        }
+
+
+        input:focus {
+
+            border-color: #6366f1;
+
+        }
+
+
+        button {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #6366f1;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+        }
+
+
+        button:hover {
+
+            background: #4f46e5;
+
+        }
+
+
+        .result {
+
+            margin-top: 20px;
+
+            padding: 20px;
+
+            background: #eef2ff;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            color: #4338ca;
+
+            display: none;
+
+        }
+
+
+        .content {
+
+            max-width: 850px;
+
+            margin: auto;
+
+            padding-bottom: 60px;
+
+        }
+
+
+        .content section {
+
+            background: white;
+
+            padding: 28px;
+
+            margin-bottom: 20px;
+
+            border-radius: 15px;
+
+            border: 1px solid #e2e8f0;
+
+        }
+
+
+        .content h2 {
+
+            margin-bottom: 12px;
+
+            color: #0f172a;
+
+        }
+
+
+        .content h3 {
+
+            margin-top: 18px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .content p {
+
+            color: #475569;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .formula {
+
+            background: #f1f5f9;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            font-weight: 700;
+
+            margin: 12px 0;
+
+        }
+
+
+        .faq {
+
+            margin-top: 15px;
+
+        }
+
+
+        .faq h3 {
+
+            color: #1e293b;
+
+        }
+
+
+        .tools-links {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 15px;
+
+        }
+
+
+        .tools-links a {
+
+            text-decoration: none;
+
+            background: #eef2ff;
+
+            color: #4338ca;
+
+            padding: 9px 14px;
+
+            border-radius: 8px;
+
+            font-weight: 600;
+
+        }
+
+
+        footer {
+
+            text-align: center;
+
+            padding: 30px 15px;
+
+            background: #0f172a;
+
+            color: #cbd5e1;
+
+        }
+
+
+        footer a {
+
+            color: white;
+
+            text-decoration: none;
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .calculator {
+
+                padding: 22px;
+
+            }
+
+
+            .content section {
+
+                padding: 22px;
+
+            }
+
+
+            .hero {
+
+                padding-top: 40px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="container navbar">
+
+        <a
+            href="../"
+            class="logo"
+        >
+            Student<span>Hub</span>
+        </a>
+
+
+        <a
+            href="../"
+            class="back-link"
+        >
+            ← All Tools
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="container">
+
+            <h1>
+                Age Calculator
+            </h1>
+
+            <p>
+                Calculate your exact age in years, months and days
+                using your date of birth.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CALCULATOR -->
+
+    <section class="calculator-section">
+
+        <div class="container">
+
+            <div class="calculator">
+
+                <h2>
+                    Calculate Your Exact Age
+                </h2>
+
+                <p class="calculator-description">
+                    Enter your date of birth below and calculate
+                    your current age instantly.
+                </p>
+
+
+                <div class="input-group">
+
+                    <label for="birthDate">
+                        Date of Birth
+                    </label>
+
+                    <input
+                        type="date"
+                        id="birthDate"
+                    >
+
+                </div>
+
+
+                <button onclick="calculateAge()">
+                    Calculate Age
+                </button>
+
+
+                <div
+                    id="result"
+                    class="result"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEO CONTENT -->
+
+    <article class="content">
+
+
+        <section>
+
+            <h2>
+                What is an Age Calculator?
+            </h2>
+
+            <p>
+                An age calculator is an online tool that calculates
+                a person's age from their date of birth.
+            </p>
+
+            <p>
+                Instead of manually counting years, months and days,
+                you can enter your date of birth and get your age
+                instantly.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>
+                How Does an Age Calculator Work?
+            </h2>
+
+            <p>
+                The calculator compares your date of birth with
+                the current date and determines the difference
+                between the two dates.
+            </p>
+
+            <p>
+                The result is displayed as completed years,
+                months and days.
+            </p>
+
+
+            <div class="formula">
+                Age = Current Date − Date of Birth
+            </div>
+
+        </section>
+
+
+        <section>
+
+            <h2>
+                Example of Age Calculation
+            </h2>
+
+            <p>
+                Suppose a person was born on 15 January 2005.
+                The calculator compares this date with today's
+                date and calculates the completed years, months
+                and days.
+            </p>
+
+            <p>
+                This makes it easier to find an exact age without
+                manually calculating the difference between dates.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>
+                Why Use an Age Calculator?
+            </h2>
+
+            <p>
+                An age calculator can be useful when you need to
+                quickly calculate your age for forms, applications,
+                school records, exams or general information.
+            </p>
+
+            <p>
+                It can also help when you need to know your age
+                precisely in years, months and days.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+
+            <div class="faq">
+
+                <h3>
+                    How can I calculate my exact age?
+                </h3>
+
+                <p>
+                    Enter your date of birth in the calculator above
+                    and click Calculate Age.
+                </p>
+
+            </div>
+
+
+            <div class="faq">
+
+                <h3>
+                    Can I calculate my age in years, months and days?
+                </h3>
+
+                <p>
+                    Yes. The calculator displays the difference
+                    between your birth date and the current date
+                    in years, months and days.
+                </p>
+
+            </div>
+
+
+            <div class="faq">
+
+                <h3>
+                    Is this age calculator free?
+                </h3>
+
+                <p>
+                    Yes. StudentHub's age calculator is free to use.
+                </p>
+
+            </div>
+
+
+            <div class="faq">
+
+                <h3>
+                    Do I need to install an app?
+                </h3>
+
+                <p>
+                    No. The calculator works directly in your web
+                    browser.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section>
+
+            <h2>
+                More Free Student Tools
+            </h2>
+
+            <p>
+                Explore more useful calculators and student tools
+                available on StudentHub.
+            </p>
+
+
+            <div class="tools-links">
+
+                <a href="../">
+                    All Student Tools
+                </a>
+
+                <a href="../percentage-calculator/">
+                    Percentage Calculator
+                </a>
+
+                <a href="../cgpa-calculator/">
+                    CGPA Calculator
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </article>
+
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 StudentHub. All rights reserved.
+    </p>
+
+    <p>
+
+        <a href="../">
+            StudentHub
+        </a>
+
+        — Free tools for students.
+
+    </p>
+
+</footer>
+
+
+<script>
+
+function calculateAge() {
+
+    const birthDateInput =
+        document.getElementById("birthDate").value;
+
+    const result =
+        document.getElementById("result");
+
+
+    if (!birthDateInput) {
+
+        result.style.display = "block";
+
+        result.textContent =
+            "Please select your date of birth.";
+
+        return;
+
+    }
+
+
+    const birthDate =
+        new Date(birthDateInput + "T00:00:00");
+
+
+    const today =
+        new Date();
+
+
+    if (birthDate > today) {
+
+        result.style.display = "block";
+
+        result.textContent =
+            "Date of birth cannot be in the future.";
+
+        return;
+
+    }
+
+
+    let years =
+        today.getFullYear() -
+        birthDate.getFullYear();
+
+
+    let months =
+        today.getMonth() -
+        birthDate.getMonth();
+
+
+    let days =
+        today.getDate() -
+        birthDate.getDate();
+
+
+    if (days < 0) {
+
+        months--;
+
+        const previousMonth =
+            new Date(
+                today.getFullYear(),
+                today.getMonth(),
+                0
+            );
+
+        days += previousMonth.getDate();
+
+    }
+
+
+    if (months < 0) {
+
+        years--;
+
+        months += 12;
+
+    }
+
+
+    result.style.display = "block";
+
+
+    result.textContent =
+        `Your exact age is ${years} years, ${months} months and ${days} days.`;
+
+}
+
+</script>
+
+
+</body>
+
+</html>
