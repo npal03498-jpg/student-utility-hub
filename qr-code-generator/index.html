@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>QR Code Generator – Free Online QR Generator | StudentHub</title>
+
+  <meta name="description"
+        content="Create a free QR code instantly with StudentHub. Generate QR codes for URLs, text, contact information and more.">
+
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical"
+        href="https://npal03498-jpg.github.io/student-utility-hub/qr-code-generator/">
+
+  <meta property="og:title"
+        content="QR Code Generator – Free Online QR Generator | StudentHub">
+
+  <meta property="og:description"
+        content="Generate QR codes for URLs and text quickly with StudentHub's free online QR Code Generator.">
+
+  <meta property="og:url"
+        content="https://npal03498-jpg.github.io/student-utility-hub/qr-code-generator/">
+
+  <meta property="og:type" content="website">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "QR Code Generator",
+    "description": "Free online QR code generator for creating QR codes from text and URLs.",
+    "url": "https://npal03498-jpg.github.io/student-utility-hub/qr-code-generator/"
+  }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #6366f1;
+      color: white;
+      padding: 22px 20px;
+    }
+
+    header .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #6b7280;
+      font-size: 17px;
+    }
+
+    .generator {
+      max-width: 550px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 130px;
+      padding: 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 9px;
+      font-size: 16px;
+      resize: vertical;
+      margin-bottom: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #6366f1;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .qr-result {
+      margin-top: 25px;
+      display: none;
+    }
+
+    .qr-result img {
+      width: 220px;
+      height: 220px;
+      max-width: 100%;
+      border: 8px solid white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .download-btn {
+      margin-top: 15px;
+      background: #374151;
+    }
+
+    .content {
+      background: white;
+      margin-top: 35px;
+      padding: 30px;
+      border-radius: 16px;
+    }
+
+    .content h2 {
+      margin-top: 25px;
+      margin-bottom: 12px;
+    }
+
+    .content h2:first-child {
+      margin-top: 0;
+    }
+
+    .content h3 {
+      margin-top: 18px;
+      margin-bottom: 7px;
+    }
+
+    .content p {
+      margin-bottom: 12px;
+      color: #4b5563;
+    }
+
+    .content ul,
+    .content ol {
+      margin-left: 22px;
+      color: #4b5563;
+      margin-bottom: 15px;
+    }
+
+    .links {
+      margin-top: 25px;
+    }
+
+    .links a {
+      color: #6366f1;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 25px;
+      text-align: center;
+      background: #111827;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .generator,
+      .content {
+        padding: 20px;
+      }
+
+      .qr-result img {
+        width: 190px;
+        height: 190px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <a href="../">← StudentHub</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <h1>QR Code Generator</h1>
+
+      <p>
+        Create a QR code from any text or URL instantly.
+      </p>
+    </section>
+
+    <!-- QR GENERATOR -->
+    <section class="generator">
+
+      <label for="qrText">
+        Enter Text or URL
+      </label>
+
+      <textarea
+        id="qrText"
+        placeholder="Example: https://example.com"
+      ></textarea>
+
+      <button onclick="generateQR()">
+        Generate QR Code
+      </button>
+
+      <div class="qr-result" id="qrResult">
+
+        <img
+          id="qrImage"
+          src=""
+          alt="Generated QR Code"
+        >
+
+        <button
+          class="download-btn"
+          onclick="downloadQR()"
+        >
+          Download QR Code
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- SEO CONTENT -->
+    <section class="content">
+
+      <h2>What is a QR Code?</h2>
+
+      <p>
+        A QR code, or Quick Response code, is a two-dimensional barcode that
+        can store information such as website URLs, text and other data.
+        QR codes can be scanned using a smartphone camera or compatible
+        QR scanning application.
+      </p>
+
+      <h2>How to Create a QR Code?</h2>
+
+      <ol>
+        <li>Enter your text or URL in the box above.</li>
+        <li>Click the Generate QR Code button.</li>
+        <li>Your QR code will appear instantly.</li>
+        <li>Use the Download button to save the QR code.</li>
+      </ol>
+
+      <h2>What Can You Use a QR Code For?</h2>
+
+      <ul>
+        <li>Sharing website URLs.</li>
+        <li>Sharing online resources with students.</li>
+        <li>Linking to documents or web pages.</li>
+        <li>Sharing text or simple information.</li>
+        <li>Creating quick access links for projects.</li>
+      </ul>
+
+      <h2>QR Code Generator for Students</h2>
+
+      <p>
+        Students can use QR codes for presentations, projects, assignments
+        and classroom activities. A QR code can provide a quick way for
+        others to open a website or access shared online information.
+      </p>
+
+      <h2>QR Codes for Websites</h2>
+
+      <p>
+        To create a QR code for a website, simply enter the complete website
+        address, including the <strong>https://</strong> part when applicable.
+        The generated QR code can then be scanned to open the website.
+      </p>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>What is a QR Code Generator?</h3>
+
+      <p>
+        A QR Code Generator is a tool that converts text or other information,
+        such as a URL, into a QR code that can be scanned.
+      </p>
+
+      <h3>Can I create a QR code for a URL?</h3>
+
+      <p>
+        Yes. Enter your website URL into the text box and click Generate QR
+        Code.
+      </p>
+
+      <h3>Can I download the generated QR code?</h3>
+
+      <p>
+        Yes. After generating the QR code, use the Download QR Code button
+        to save it as an image.
+      </p>
+
+      <h3>Is this QR Code Generator free?</h3>
+
+      <p>
+        Yes. The StudentHub QR Code Generator is free to use.
+      </p>
+
+      <div class="links">
+
+        <p>Explore more StudentHub tools:</p>
+
+        <p>
+          <a href="../percentage-calculator/">
+            Percentage Calculator
+          </a>
+          |
+          <a href="../cgpa-calculator/">
+            CGPA Calculator
+          </a>
+          |
+          <a href="../age-calculator/">
+            Age Calculator
+          </a>
+          |
+          <a href="../discount-calculator/">
+            Discount Calculator
+          </a>
+          |
+          <a href="../bmi-calculator/">
+            BMI Calculator
+          </a>
+          |
+          <a href="../word-counter/">
+            Word Counter
+          </a>
+          |
+          <a href="../pomodoro-timer/">
+            Pomodoro Timer
+          </a>
+          |
+          <a href="../">
+            All Student Tools
+          </a>
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      © 2026 StudentHub. Free tools for students.
+    </p>
+  </footer>
+
+
+  <script>
+
+    function generateQR() {
+
+      const text =
+        document.getElementById("qrText").value.trim();
+
+      if (!text) {
+        alert("Please enter some text or a URL.");
+        return;
+      }
+
+      const encodedText =
+        encodeURIComponent(text);
+
+      const qrUrl =
+        "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="
+        + encodedText;
+
+      document.getElementById("qrImage").src =
+        qrUrl;
+
+      document.getElementById("qrResult").style.display =
+        "block";
+    }
+
+
+    function downloadQR() {
+
+      const image =
+        document.getElementById("qrImage");
+
+      if (!image.src) {
+        return;
+      }
+
+      const link =
+        document.createElement("a");
+
+      link.href = image.src;
+
+      link.download = "studenthub-qr-code.png";
+
+      document.body.appendChild(link);
+
+      link.click();
+
+      document.body.removeChild(link);
+    }
+
+  </script>
+
+</body>
+</html>
